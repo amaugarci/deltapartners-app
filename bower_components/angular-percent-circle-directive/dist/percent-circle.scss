@@ -1,0 +1,30 @@
+.pc-container {
+    position: relative;
+    width: 100%;
+}
+
+.pc-border {
+    position: relative;
+    text-align: center;
+    width: 100%;
+    padding-top: 100%;
+    border-radius: 100%;
+}
+
+.pc-circle {
+    position: relative;
+    margin-top: -90%;
+    margin-left: 10%;
+    width: 80%;
+    padding-top: 80%;
+    border-radius: 100%;
+}
+
+.pc-percent {
+    font-family: Arial, sans-serif;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-size: 3em;
+}

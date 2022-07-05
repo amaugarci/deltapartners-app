@@ -1,0 +1,42 @@
+<p class="text-center font-size14 header-title-5 margin-top-20" ng-if="!loading && data.leads.length == 0">You currently do not have any lead assigned in this pipeline</p>
+<ion-list class="notes-list">
+    <ion-item class="note-item item-icon-right p-r30 borderless" ng-repeat="lead in data.leads" ng-click="editLead({{lead.id}})">
+        <div class="col p0">
+            <div class="row p-l0"><i class="header-title-5 text-truncate">{{lead.name}} - {{lead.client}}</i></div>
+            <div class="row p-l0" ng-show="lead.description"><i class="header-title-6 text-truncate">{{lead.description}}</i></div>
+            <div class="col p-l0">
+                <div class="row p-l0">
+                    <div class="col col-50">
+                        <i class="text-1 color-gray">Start date: </i><i class="text-1 color-darkblue" ng-show="lead.start_date != null"> {{lead.start_date*1000 | amDateFormat:'DD MMM YY'}}</i>
+                    </div>
+
+                    <div class="col col-50">
+                        <!--<div class="row"><i> SF closing date {{calculateEndDate(lead) | amDateFormat:'DD MMM YY'}}</i></div>-->
+                        <i class="text-1 color-gray">SF expected date: </i><i class="text-1 color-darkblue" ng-show="lead.end_date != null"> {{lead.end_date*1000 | amDateFormat:'DD MMM YY'}}</i>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col m-r5 background-bg text-center">
+                    <i class="text-1 color-gray">Retainer: </i><i class="text-1 color-darkblue"> {{lead.revenue| currency:undefined:0}}</i>
+                    <div class="col m-a">
+                        <div class="active-border active-border-high">
+                            <div class="circle color-{{lead.probability}}" circle-directive color="color-{{lead.probability}}" percent="{{lead.probability}}"></div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col m-l5 background-bg text-center">
+                    <i class="text-1 color-gray">Success Fee: </i><i class="text-1 color-darkblue"> {{lead.successFees.amount | currency:undefined:0}}</i>
+                    <div class="col m-a">
+                        <div class="active-border active-border-high">
+                            <div class="circle color-{{lead.successFees.probability}}" circle-directive color="color-{{lead.successFees.probability}}" percent="{{lead.successFees.probability}}"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <i class="icon fa fa-angle-right font-size30 r5 color-5"></i>
+        <div class="cell-separator" ng-show="$index+1 != leads.length"></div>
+    </ion-item>
+</ion-list>

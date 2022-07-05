@@ -1,0 +1,28 @@
+<ion-modal-view title="Iniciar sesión">
+    <ion-header-bar class="bar bar-stable">
+        <button class="button button-clear ion-close" ng-click="hideModalMessageDetails()"></button>
+    </ion-header-bar>
+    <ion-content>
+        <div class="p-l20 p-r20">
+        <div class="row">
+            <div class=" col col-20">
+                <div class="row text-color-3"><i class="log-icon icon fa {{message.icon}}"></i></div>
+            </div>
+            <div class="col col-80 p0">
+                <div class="row p-l0 p-r0 m-b-15">
+                    <div class="item-text-wrap text-1 text-left" style="padding-bottom: 12px;">
+                        <div>
+                            <div ng-bind-html="message.event.messageHtml"></div>
+                            <div class="row text font-size13 color-gray p-l0">
+                                <i class="fa fa-clock-o p-r10 " style="margin-top: auto;margin-bottom: auto"></i> {{message.timestamp*1000 | amDateFormat:'DD MMM YYYY'}}
+                            </div>
+                            <div ng-show="{{message.event.collapsable}}" class="logs-qualitative-comment" style="margin: 0 !important;" ng-bind="message.event.new_value"></div>
+                            <a class="button-big-1 log-button-more" ng-click="hideModalMessageDetails()">OK</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        </div>
+    </ion-content>
+</ion-modal-view>

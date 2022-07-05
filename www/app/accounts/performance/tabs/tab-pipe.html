@@ -1,0 +1,21 @@
+        <div class="subheader-1 m-t20 row p-l10 p-r10 p-b15">
+          <div class="col col-50">
+            <label class="item item-input item-select custom-select custom-select-row m-l0">
+              <select ng-model="orderBySelect" ng-change="setOrderBy(orderBySelect)">
+                <option value="" disabled selected>Order by:</option>
+                <option ng-repeat="(key, value) in data.orders" value="{{value}}">{{key}}</option>
+              </select>
+            </label>
+          </div>
+          <div class="col col-50">
+            <label class="item item-input item-select custom-select custom-select-row m-l0">
+              <select ng-model="timesSelect" ng-change="setTime(timesSelect)">
+                <option value="" disabled selected>Show last:</option>
+                <option ng-repeat="(key, value) in data.times" value="{{value}}">{{key}}</option>
+              </select>
+            </label>
+          </div>
+        </div>
+       <div ng-include="'app/leads/templates/leads-list.html'"></div>
+
+       

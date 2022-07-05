@@ -1,0 +1,61 @@
+
+          <div class="subheader-1 row p-l10 p-r10 p-b10 p-t10">
+      
+        <div class="col text-1 color-darkblue margin-auto-t-b">
+              Location:
+          </div>
+        <div class="col">
+            <label class="item item-input item-select custom-select custom-select-row m-l0">
+              <select ng-model="orderBySelect" ng-change="setFilter(orderBySelect)">
+                <option value="" disabled>Filter by:</option>
+                <option ng-repeat="(key, value) in data.filter" value="{{value}}">{{key}}</option>
+              </select>
+            </label>
+          </div>
+      </div>
+
+    <div class="row number-chance" style="text-align: center; padding-top: 15px;">
+      <div class="col table-padding text-1 color-gray text-bold">
+        MONTH
+        <div style="padding-top: 3px;">
+          <div class="square-background-5-inverse text-1 text-bold color-darkblue" ng-click="$index != 12 && showMonth($index)"  ng-repeat="value in stats.month track by $index" >
+          {{value}} 
+          <i ng-show="$index != 12" class="icon ion-chevron-right color-5 font-size12" style="float:right; padding-right: 8px;"></i>
+          </div>
+        </div>
+          <!-- <i class="icon fa fa-angle-right font-size30 r0 color-5"></i> -->
+        </div>
+      <div class="col table-padding">
+        <div class="text-1 color-gray text-bold m-b5">BUDGET</div>
+        <div class="square-background-5 text-1 color-darkblue" ng-class="{'text-bold':$index==12}" ng-repeat="value in stats.budget track by $index" ng-click="$index != 12 && showMonth($index)">
+          <div>{{value | shortNumberInMillionsOneDecimal}}</div></div>
+      </div>
+      <div class="col color-100 table-padding text-1 text-bold">
+        <div style="margin-bottom: 5px;">100%</div>
+        <div class="square-background-5 text-1 color-darkblue" ng-repeat="value in stats.ratio100 track by $index" ng-click="$index != 12 && showMonth($index)">
+          <div ng-class="{'text-bold':$index==12}" ng-class="{'text-bold':$index==12}" ng-show="value > 0">{{value | shortNumberInMillionsOneDecimal}}</div>
+          <div ng-class="{'text-bold':$index==12}" ng-class="{'text-bold':$index==12}" ng-show="value == 0">--</div>
+        </div>
+      </div>
+      <div class="col color-90 table-padding text-1 text-bold">
+        <div style="margin-bottom: 5px;">≥90%</div>
+        <div class="square-background-5 text-1 color-darkblue" ng-repeat="value in stats.ratio90 track by $index" ng-click="$index != 12 && showMonth($index)">
+          <div ng-class="{'text-bold':$index==12}" ng-show="value > 0 && stats.ratio100[$index] != value">{{value | shortNumberInMillionsOneDecimal}}</div>
+          <div ng-class="{'text-bold':$index==12}" ng-show="value == 0 || stats.ratio100[$index] == value">--</div>
+        </div>
+      </div>
+      <div class="col color-70 table-padding text-1 text-bold">
+        <div style="margin-bottom: 5px;">≥70%</div>
+        <div class="square-background-5 text-1 color-darkblue" ng-repeat="value in stats.ratio70 track by $index" ng-click="$index != 12 && showMonth($index)">
+          <div ng-class="{'text-bold':$index==12}" ng-show="value > 0 && stats.ratio90[$index] != value">{{value | shortNumberInMillionsOneDecimal}}</div>
+          <div ng-class="{'text-bold':$index==12}" ng-show="value == 0 || stats.ratio90[$index] == value">--</div>
+        </div>
+      </div>
+      <div class="col color-50 table-padding text-1 text-bold">
+        <div style="margin-bottom: 5px;">≥50%</div>
+        <div class="square-background-5 text-1 color-darkblue" ng-repeat="value in stats.ratio50 track by $index" ng-click="$index != 12 && showMonth($index)">
+          <div ng-class="{'text-bold':$index==12}" ng-show="value > 0 && stats.ratio70[$index] != value">{{value | shortNumberInMillionsOneDecimal}}</div>
+          <div ng-class="{'text-bold':$index==12}" ng-show="value == 0 || stats.ratio70[$index] == value">--</div>
+        </div>
+      </div>
+    </div>

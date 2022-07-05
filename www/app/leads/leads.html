@@ -1,0 +1,42 @@
+<ion-view view-title="MY LEADS">
+  <ion-nav-buttons side="right">
+
+    <button class="button button-clear header-boton text-semibold fa-button-header p-r15" ng-click="addLead()">
+        <i class="fa fa-plus"></i> CREATE
+    </button>
+  </ion-nav-buttons>
+  <ion-content>
+    <ion-refresher
+    pulling-text="Pull to refresh..."
+    on-refresh="loadData(true)">
+  </ion-refresher>
+    <div>
+      <div class="subheader-1 row p-l10 p-r10 p-b15">
+        <div class="col col-50">
+            <label class="item item-input item-select custom-select custom-select-row m-l0">
+              <select ng-model="orderBySelect" ng-change="setOrderBy(orderBySelect)">
+                <option value="" disabled>Order by:</option>
+                <option ng-repeat="(key, value) in data.orders" value="{{value}}">{{key}}</option>
+              </select>
+            </label>
+          </div>
+        <div class="col col-50">
+            <label class="item item-input item-select custom-select custom-select-row m-l0">
+              <select ng-model="timesSelect" ng-change="setTime(timesSelect)">
+                <option value="" disabled selected>Show last:</option>
+                <option ng-repeat="(key, value) in data.times" value="{{value}}">{{key}}</option>
+              </select>
+            </label>
+          </div>
+      </div>
+      <div >
+        <div ng-include="'app/leads/templates/leads-list.html'"></div>
+      </div>
+    </div>
+  <ion-infinite-scroll
+    ng-if="!data.noMoreData"
+    on-infinite="loadData(false)"
+    distance="1%">
+  </ion-infinite-scroll>
+  </ion-content>
+</ion-view>

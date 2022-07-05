@@ -1,0 +1,114 @@
+<ion-modal-view>
+    <ion-header-bar class="bar bar-stable">
+        <button class="button button-clear ion-close" ng-click="hideModalProjectLostReasons()"></button>
+    </ion-header-bar>
+
+    <ion-content class="text-center">
+        <!-- Lead info -->
+        <div class="subheader-1 col text-center">
+            <div class="row">
+                <div class="col col-100">
+                    <div class="header-title-4 color-darkblue text-truncate">{{lead.account}}</div>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col col-100">
+                    <div class="header-title-4 color-darkblue text-truncate" style="padding-bottom: 4px;">{{lead.name}}</div>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col col-50 m-a">
+                    <i class="text-1 color-gray">Partner: </i>
+                    <i class="text-1 color-darkblue">{{lead.partner}}</i>
+                </div>
+            </div>
+        </div>
+        <!-- end Lead info -->
+
+        <br />
+        <p class="title-bar-1" style="margin-bottom: 10px;">Reasons why the lead has been lost</p>
+
+        <!-- First form -->
+        <div class="p-l20 p-r20" ng-if="!reason">
+            <div class="background-with-padding-2">
+                <ion-checkbox
+                        class="checkbox-square checkbox-padding text-1 color-darkblue m-t15 m-l10 m-b10 text-left"
+                        ng-click="setReason('stopped')">
+                    Process stopped / Died
+                </ion-checkbox>
+
+                <ion-checkbox
+                        class="checkbox-square checkbox-padding text-1 color-darkblue m-t15 m-l10 m-b10 text-left"
+                        ng-click="setReason('lead-lost')">
+                    Lead lost to another firm
+                </ion-checkbox>
+            </div>
+        </div>
+        <!-- end First form -->
+
+        <!-- Form Process stopped / Died -->
+        <div class="p-l20 p-r20" ng-if="reason == 'stopped'">
+            <div class="row">
+                <div class="col col-100 m-a m-b10 center">
+                    <i class="text-1 color-gray">Process stopped or died because...</i>
+                </div>
+            </div>
+            <ion-radio
+                    class="radio-square radio-padding text-1 color-darkblue m-b10 text-left"
+                    ng-repeat="stoppedReason in stoppedReasons"
+                    ng-class="{'active': lost_lead_reasons.psd == stoppedReason}"
+                    ng-click="setReasonDetail(stoppedReason)">
+                {{stoppedReason}}
+            </ion-radio>
+
+            <label ng-show="lost_lead_reasons.psd == 'Others'" class="col item item-input rectangle-background-1 m-l0" style="width: 100%;">
+                <input ng-model="othersReasons" ng-change="setOthersReasons(this)" type="text" class="text-1 color-darkblue p-l15" placeholder="Others explanation" />
+            </label>
+
+            <button class="button-big-1 btn-no-margins m-t20" ng-disabled="!lost_lead_reasons.psd" ng-click="finish()">Save</button>
+            <br>
+            <button class="button-back btn-no-margins m-b20 m-t20" ng-click="setReason(null)">Back</button>
+        </div>
+        <!-- endForm Process stopped / Died -->
+
+        <!-- Form Lead lost to another firm -->
+        <div class="p-l20 p-r20" ng-if="reason == 'lead-lost'">
+            <div class="row">
+                <div class="col col-100 m-a m-b10 text-center">
+                    <i class="text-1 color-gray">Lead lost to another firm</i>
+                </div>
+            </div>
+
+            <div class="m-t10" style="margin-bottom: 20px;">
+                <p class="text-center">Who have we lost it to?</p>
+                <label class="item item-input item-select custom-select">
+                    <select ng-model="lost_lead_reasons.anf_who">
+                        <option value="" disabled>Selected:</option>
+                        <option ng-repeat="lostWhoReason in lostWhoReasons" value="{{lostWhoReason}}">{{lostWhoReason}}</option>
+                    </select>
+                </label>
+            </div>
+
+            <!--
+            <label ng-show="lost_lead_reasons.anf_who == 'Others'" class="col item item-input rectangle-background-1 m-l0" style="width: 100%;">
+                <input ng-model="othersReasonsWho" ng-change="setOthersReasonsWho(this)" type="text" class="text-1 color-darkblue p-l15" placeholder="Others" />
+            </label>
+            -->
+
+            <div class="m-t10" style="margin-bottom: 20px;">
+                <p class="text-center">Why?</p>
+                <ion-checkbox ng-change="setWhyReasons()" ng-repeat="lostWhyReason in lostWhyReasons" ng-model="lostWhyReason.checked" class="checkbox-square checkbox-padding text-1 color-darkblue text-left">
+                    {{lostWhyReason.name}}
+                </ion-checkbox>
+            </div>
+
+            <button class="button-big-1 btn-no-margins" ng-disabled="!lost_lead_reasons.anf_who" ng-click="finish()">Save</button>
+            <br>
+            <button class="button-back btn-no-margins m-b20 m-t20" ng-click="setReason(null)">Back</button>
+        </div>
+        <!-- end Form Lead lost to another firm -->
+
+    </ion-content>
+</ion-modal-view>

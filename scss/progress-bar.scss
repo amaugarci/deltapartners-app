@@ -1,0 +1,42 @@
+progress[value]::-webkit-progress-value {
+  background:$GrisDelta;
+  height: 4px;
+  border-radius: 100px;
+  background-size: 35px 10px, 100% 100%, 100% 100%;
+}
+
+progress[value]::-webkit-progress-bar {
+    height: 4px;
+  background-color: $BGtitle;
+  border-radius: 100px;
+  box-shadow: none;
+}
+
+progress[value].progress-white-background::-webkit-progress-bar {
+    background-color: white !important
+}
+progress {
+    display: block;
+    margin: 8px auto;
+    width: 100%;
+}
+
+.progress-bar-big {
+    padding-left: 20px;
+    padding-right: 20px;
+    margin: 0px;
+}
+
+progress.progress-bar-big[value]::-webkit-progress-value {
+  height: 14px !important;
+  background-size: 35px 20px, 100% 100%, 100% 100% !important
+}
+
+progress.progress-bar-big[value]::-webkit-progress-bar {
+    height: 14px !important;
+    box-shadow: none;
+}
+
+#progressbar {
+    background: rgba(255, 255, 255, 0);
+}

@@ -1,0 +1,27 @@
+<div class="row number-chance">
+     
+      <div class="col color-100 table-padding m-l5 text-truncate" style="margin-top:23px">
+        <div class="col square-background-5-inverse text-1 text-bold color-darkblue text-left" style="height: 60px" ng-repeat="lead in stats.deliveredLead track by $index">
+          <div class="font-size12 text-truncate p-l10 p-r5" ng-show="lead.subAccount">{{lead.account}} - {{lead.subAccount}}</div>
+          <div class="font-size12 text-truncate p-l10 p-r5" ng-show="!lead.subAccount">{{lead.account}}</div>
+          <div class="font-size12 text-truncate p-l10 p-r5">{{lead.name}}<br>{{lead.description}}</div>
+        </div>
+      </div>
+      <!-- <div class="col col-15 color-100 table-padding">
+        <div class="text-1 text-bold color-gray m-b5">PIC</div>
+        <div class="square-background-5" style="height: 60px" ng-repeat="value in stats.deliveredPIC track by $index"><div  class="text-1 p-t10 color-darkblue" style="margin-bottom: 2px">{{value}}</div></div>
+      </div> -->
+      
+      <div class="col col-15 color-100 table-padding">
+        <div class="text-1 text-bold color-gray" style="margin-bottom: 5px;">SDate</div>
+        <div class="square-background-5 text-1 color-darkblue" style="height: 60px" ng-repeat="value in stats.deliveredDate track by $index">
+          <div class="p-t0" style="margin-bottom: 2px">{{value*1000 | amDateFormat:"D"}}<br>{{value*1000 | amDateFormat:"MMM"}}</div>
+          </div>
+      </div>
+
+      <div class="col col-15 color-90 table-padding m-r5">
+        <div class="text-1 text-bold color-gray m-b5">Revs</div>
+        <div class="square-background-5" style="height: 60px" ng-repeat="value in stats.deliveredRevenue track by $index"><div class="text-1 p-t10 color-darkblue" style="margin-bottom: 2px">{{value | shortNumberInMillions}}</div></div>
+      </div>
+
+    </div>

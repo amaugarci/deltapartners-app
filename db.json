@@ -1,0 +1,43 @@
+{
+    "questions" :
+    [
+      {
+        "id": 1,
+        "name": "Strategic Considerations",
+        "qualitative": 0,
+        "questions": [
+            {
+                    "id": 1,
+                    "title": "Alignment to Key Account Strategy (Tier 1, Tier 2, Others)",
+                    "weight": 30,
+                    "created_at": 1525255200,
+                    "updated_at": 1525255200,
+                    "answers": [
+                        {
+                            "id": 1,
+                            "text": "Strategic & priority accounts",
+                            "weight": 10,
+                            "created_at": 1525255200,
+                            "updated_at": 1525255200
+                        },
+                        {
+                            "id": 2,
+                            "text": "Tier 2 accounts",
+                            "weight": 5,
+                            "created_at": 1525255200,
+                            "updated_at": 1525255200
+                        },
+                        {
+                            "id": 3,
+                            "text": "Others/Opportunistic",
+                            "weight": 5,
+                            "created_at": 1525255200,
+                            "updated_at": 1525255200
+                        }
+                    ]
+            }
+        ]
+    }
+]
+
+}

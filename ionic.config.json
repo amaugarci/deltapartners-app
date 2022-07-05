@@ -1,0 +1,19 @@
+{
+  "name": "delta",
+  "integrations": {
+    "cordova": {}
+  },
+  "type": "ionic1",
+  "gulpStartupTasks": [
+    "sass",
+    "watch"
+  ],
+  "watchPatterns": [
+    "www/**/*",
+    "!www/lib/**/*",
+    "!www/**/*.map",
+    "scss/**/*"
+  ],
+  "pro_id": "6cce2f80",
+  "id": "6cce2f80"
+}

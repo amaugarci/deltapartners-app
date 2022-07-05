@@ -1,0 +1,110 @@
+<ion-view view-title="MY DASHBOARD">
+  <ion-content>
+    <div class="title-bar-1">YOUR PIPE SITUATION</div>
+    <div class="row label-text-3 remove-padding-top-all">
+      <div class="col col-33"> Last Update</div>
+      <div class="col col-33"> Urgent Leads</div>
+      <div class="col col-33"> Leads on</div>
+    </div>
+    <div class="row label-text-3" style="margin-top: -15px">
+      <div class="col col-33"> (Days Ago) </div>
+      <div class="col col-33"> to Update </div>
+      <div class="col col-33"> "Watch List" </div>
+    </div>
+    <div class="row">
+      <div class="col col-33">
+        <div class="square-background-3">10</div>
+      </div>
+      <div class="col col-33">
+        <div class="square-background-3">10</div>
+      </div>
+      <div class="col col-33">
+        <div class="square-background-3">10</div>
+      </div>
+    </div>
+    <div class="row remove-padding-bottom-all" style="padding-top: 10px">
+      <button class="button-medium-1">Update Pipe</button>
+      <button class="button-medium-1">Create New Lead</button>
+    </div>
+    <div class="title-bar-1 title-bar-1-margin-top">MY PIPE SIZE</div>
+    <div class="row" style="padding-top: 0">
+      <div class="col col-25" style="padding-top: 45px;font-size: 16px">
+        <div class = "row">Leads</div>
+        <div class = "row" style="padding-top: 5px">(#)</div>
+      </div>
+      <div class="col col-75">
+        <!-- START OF GRAPH -->
+<div style="height: 100px"> <!-- this sets graph height -->
+<canvas style="position:absolute;" height="inherit"
+ width="100" class="graph-adapt-height gradient-gray chart chart-bar" chart-data="data[0]" chart-labels="labels" chart-series="series" chart-options="optionsLeads"
+ chart-dataset-override="datasetOverride1" chart-click="onClick" chart-colors="colours">
+</canvas>
+<div class="row graph-numbers graph-numbers graph-numbers-primary" style="    position: relative;
+    padding-top: 70px;">
+<div class="col" ng-repeat="value in data[0] track by $index"> {{value}} </div>
+</div>
+<div class="row graph-numbers graph-numbers graph-numbers-primary" style="    position: relative;
+    padding-top: 21px;
+    font-size: 18px;">
+<div class="col color-{{value}}" ng-repeat="value in dataChance track by $index"> {{value}}% </div>
+</div>
+</div>
+<!-- END OF GRAPH -->
+      </div>
+    </div>
+    <div class="horizontal-line-3"></div>
+    <div class="horizontal-line-3" style="margin-top: 40px"></div>
+
+     <div class="row" style="margin-top: -24px; padding-bottom: 0px; margin-bottom: -5px;">
+      <div class="col col-25" style="font-size: 16px">
+        <div class = "row">Pipe Size</div>
+        <div class = "row" style="padding-top: 5px">($m)</div>
+      </div>
+      <div class="col col-75">
+        <!-- START OF GRAPH -->
+<div style="height: 100px"> <!-- this sets graph height -->
+<canvas pointer-events: none; style="position:absolute;" height="inherit"
+ width="100" class="graph-adapt-height gradient-gray chart chart-bar" chart-data="data[1]" chart-labels="labels" chart-series="series" chart-options="optionsPipes"
+ chart-dataset-override="datasetOverride2" chart-click="onClick" chart-colors="colours">
+</canvas>
+<div class="row graph-numbers graph-numbers graph-numbers-primary" style="color: #808D98; position: relative;">
+<div class="col" ng-repeat="value in data[1] track by $index"> {{-value}} </div>
+</div>
+<div class="row graph-numbers graph-numbers graph-numbers-primary" style="    position: relative;
+    padding-top: 21px;
+    font-size: 18px;">
+</div>
+</div>
+<!-- END OF GRAPH -->
+      </div>
+    </div>
+
+    <div class="title-bar-1 title-bar-1-margin-top">THIS MONTH PERFORMANCE</div>
+    <div class="row number-chance remove-padding-top-all remove-padding-bottom-all">
+      <div class="col" style="color: #a2a2a2;padding: 1px;">
+        MONTH
+        <div class="" style="color: #a2a2a2;margin-top: 5px; "><div style="padding-top: 10px !important;" class="square-background-4">{{monthPerformance.month}} <i class="icon ion-chevron-right" style="    font-size: 12px;
+    padding-left: 8px;"></i></div></div>
+        </div>
+      <div class="col" style="color: #a2a2a2; padding: 1px;">BUDGET
+        <div class="" style="color: #a2a2a2;margin-top: 5px;"><div style="padding-top: 10px !important;" class="square-background-4">{{monthPerformance.budget}}</div></div>
+      </div>
+      <div class="col color-100" style="padding: 1px;">100%
+        <div class="color-100" style="margin-top: 5px;"><div style="padding-top: 10px !important;" class="square-background-4" ng-class="{'font-bold': monthPerformance.value100 != '--'}">{{monthPerformance.value100}}</div></div>
+      </div>
+      <div class="col color-90" style="padding: 1px;">90%
+        <div class="color-90" style="margin-top: 5px;"><div style="padding-top: 10px !important;" class="square-background-4" ng-class="{'font-bold': monthPerformance.value100 != '--'}">{{monthPerformance.value90}}</div></div>
+      </div>
+      <div class="col color-70" style="padding: 1px;">70%
+        <div class="color-70" style="margin-top: 5px;"><div style="padding-top: 10px !important;" class="square-background-4" ng-class="{'font-bold': monthPerformance.value100 != '--'}">{{monthPerformance.value70}}</div></div>
+      </div>
+      <div class="col color-50" style="padding: 1px;">50%
+        <div class="color-50" style="margin-top: 5px;"><div style="padding-top: 10px !important;" class="square-background-4" ng-class="{'font-bold': monthPerformance.value100 != '--'}">{{monthPerformance.value50}}</div></div>
+      </div>
+    </div>
+   <div class="title-bar-1 title-bar-1-margin-top">LAST 3 ACCOUNT MESSAGES</div>
+
+  </ion-content>
+</ion-view>
+
+

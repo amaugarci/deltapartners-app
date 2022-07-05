@@ -1,0 +1,168 @@
+/* START of range stuff */
+
+input[type=range] {
+  -webkit-appearance: none; /* Hides the slider so that custom slider can be made */
+  width: 100%; /* Specific width is required for Firefox. */
+  background: transparent; /* Otherwise white in Chrome */
+  border: none !important;
+  outline: none !important;
+   box-shadow: none !important;
+
+}
+
+
+input[type=range]::-moz-focus-outer {
+    border: 0;
+    outline: none !important;
+    }
+
+input[type=range]:focus {
+  outline: none !important; /* Removes the blue border. You should probably do some kind of focus styling for accessibility reasons though. */
+  border: none !important;
+  box-shadow: none !important;
+}
+
+input[type=range]::-ms-track {
+  width: 100%;
+  cursor: pointer;
+
+  /* Hides the slider so custom styles can be added */
+  background: transparent; 
+  border-color: transparent;
+  color: transparent;
+  border: none !important;
+  outline: none !important;
+}
+
+
+/* Special styling for WebKit/Blink */
+input[type=range]::-webkit-slider-thumb {
+    
+  -webkit-appearance: none !important;
+  border: 4px solid #7B8994;
+  height: 30px;
+  width: 30px;
+  box-shadow: none !important;
+  border-radius: 100px;
+  background: #ffffff;
+  cursor: pointer;
+  margin-top: -14px;
+  outline: none !important;
+  
+}
+
+input[type=range]::-moz-focus-outer { border: 0; }
+/* All the same stuff for Firefox */
+input[type=range]::-moz-range-thumb {
+  -webkit-appearance: none !important;
+  border: 4px solid #7B8994;
+  height: 30px;
+  width: 30px;
+  box-shadow: none;
+  border-radius: 100px;
+  background: #ffffff;
+  cursor: pointer;
+  outline: none !important;
+
+}
+
+/* All the same stuff for IE */
+input[type=range]::-ms-thumb {
+  -webkit-appearance: none !important;
+  border: 4px solid #7B8994;
+  height: 30px;
+  width: 30px;
+  box-shadow: none;
+  border-radius: 100px;
+  background: #ffffff;
+  cursor: pointer;
+  outline: none !important;
+
+}
+
+input[type=range]::-webkit-slider-runnable-track {
+  
+  width: 100%;
+  height: 4px;
+  cursor: pointer;
+  border: none !important;
+  background: linear-gradient(to right,  white 0%,white 3%,#7B8994 3%,#7B8994 97%,white 97%, white 100%);
+  outline: none !important;
+  box-shadow: none !important;
+}
+
+input[type=range]:focus::-webkit-slider-runnable-track {
+  
+  background: #7B8994;
+  border: none !important;
+  outline: none !important;
+}
+
+input[type=range]::-moz-range-track {
+  width: 100%;
+  height: 8.4px;
+  cursor: pointer;
+  background: #7B8994;
+  border: none !important;
+  outline: none !important;
+}
+
+input[type=range]::-ms-track {
+  width: 100%;
+  height: 8.4px;
+  cursor: pointer;
+  background: #7B8994;
+  border: none !important;
+  outline: none !important;
+}
+input[type=range]::-ms-fill-lower {
+  visibility: hidden;
+  background: #7B8994;
+  border: none !important;
+  outline: none !important;
+  box-shadow: none !important;
+}
+input[type=range]:focus::-ms-fill-lower {
+  
+  background: #7B8994;
+  border: none !important;
+  outline: none !important;
+  box-shadow: none !important;
+}
+input[type=range]::-ms-fill-upper {
+  background: #7B8994;
+  border: none !important;
+  outline: none !important;
+  box-shadow: none !important;
+}
+input[type=range]:focus::-ms-fill-upper {
+  background: #7B8994;
+  border: none !important;
+  outline: none !important;
+  box-shadow: none !important;
+}
+
+
+/* END of range stuff */
+
+.simple-range {
+  
+    padding: 0 !important;
+    margin: 0 !important;    padding-left: 9.5% !important;
+    padding-right: 9.5% !important;
+}
+
+
+
+
+//hide line on safari!
+
+input[type='range']::-webkit-slider-thumb::before {
+  position: absolute;
+  content: '';
+  height: 4px; /* equal to height of runnable track */
+  width: 500px; /* make this bigger than the widest range input element */
+  left: -70vw; /* this should be -2px - width */
+  top: 11px; /* don't change this */
+  background: transparent;
+}

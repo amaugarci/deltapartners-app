@@ -1,0 +1,57 @@
+<!-- block tittle -->
+<div class="title-bar-1">
+    QUALIFICATION MATRIX
+</div>
+<!-- end block tittle -->
+
+<div class="row" id="qualificationMatrixWrap">
+    <div class="col">
+        <div class="background-with-padding-2" ng-repeat="block in data.qualifications" style="margin-bottom: 30px !important; padding: 10px; margin: 0px;">
+            <div class="text-bold color-gray m-a ng-binding" style="font-size: 15px; text-align: center;">
+                {{block.name}}
+            </div>
+
+            <!-- block questions -->
+            <div ng-if="block.questions.length > 0" ng-repeat="question in block.questions">
+
+                <div class=" margin-auto-t-b p-t10 text-1 color-darkblue text-left">
+                    {{question.title}}
+                </div>
+
+                <div class="m-t10" ng-class="{'error-input': errors && errors.qualifications_answers && errors.qualifications_answers[question.id]}" style="margin-bottom: 20px;">
+                        <label class="item item-input item-select custom-select" style="width: 100%; margin-left: 0px; padding: 6px 0 5px 5px; background-color: #f2f2f2;">
+                            <select ng-model="data.answerSelect[question.id]" ng-change="showSelectAnswer(data.answerSelect[question.id], question, block)" style="background-color: #f2f2f2;">
+                                <option value="" disabled>Selected:</option>
+                                <option ng-repeat="answer in question.answers" ng-selected="answer.enabled" value="{{answer.id}}">{{answer.text}}</option>
+                            </select>
+                    </label>
+                    <span class="error-text" ng-if="errors.qualifications_answers[question.id]">{{errors.qualifications_answers[question.id]}}</span>
+                </div>
+            </div>
+            <!-- end block questions -->
+        </div>
+    </div>
+</div>
+
+<!-- qualification total -->
+<div class="row">
+    <div class="col p-l15">
+
+        <div class="text-bold color-gray m-a ng-binding" style="font-size: 14px; text-align: center;">
+            Total Qualification Matrix
+        </div>
+
+        <label class="item item-input m-l-r-15 input-text m-t10" style="width: 150px; position: relative; left: 50%; margin-left: -75px;">
+
+            <input type="text" class="text-1 color-darkblue p-l15 input-currency ng-pristine ng-untouched ng-valid ng-empty"
+                   ng-disabled="true"
+                   ng-model="data.qualificationMatrix.total" placeholder="" style="font-size: 16px !important; text-align: center; margin-top: -5px; padding-left: 0px !important; background-color: #f2f2f2;" value="0" />
+        </label>
+    </div>
+</div>
+<!-- end qualification total -->
+
+<style>
+    div#qualificationMatrixWrap .custom-select::after { display: none !important; }
+    .no-margins .popup-buttons button { margin-right: 5px !important; }
+</style>

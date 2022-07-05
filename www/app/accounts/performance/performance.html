@@ -1,0 +1,20 @@
+
+   <ion-view> <ion-nav-title>{{ pageTitle }}</ion-nav-title>
+    <ion-header-bar class="col bar bar-subheader" style="padding: 0">
+      <div class="subheader-3" style="width: 100%; margin:0 !important">
+        <div class="header-title-4 color-darkblue" style="padding-top: 18px;">{{data.account.name}}</div>
+      </div>
+
+    <div class="button-bar">
+      <a class="button button-tab header-title-3 p-t5" style="line-height: 40px" ng-click="selectedTab(0)" ng-class="{'active': currentTab == 0}">PERFORMANCE<hr></a>
+      <a class="button button-tab header-title-3 p-t5" style="line-height: 40px" ng-click="selectedTab(1)" ng-class="{'active': currentTab == 1}">PIPE<hr></a>
+    </div>
+
+    </ion-header-bar>
+
+    <ion-content class="fixed-header">
+      <div ng-show="currentTab == 0" ng-include="'app/accounts/performance/tabs/tab-performance.html'"></div>
+      <div ng-show="currentTab == 1" ng-include="'app/accounts/performance/tabs/tab-pipe.html'"></div>
+    </ion-content>
+
+  </ion-view>

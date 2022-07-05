@@ -1,0 +1,33 @@
+
+    <div class="title-bar-1">PIPELINE BREAKDOWN</div>
+    <div class="row table-padding">
+        <div style="padding:5px"></div>
+        <div class="square-background-6 color-{{$index}} border-bottom-color-{{$index}} text-1 text-bold" style="padding-top: 8px;" ng-repeat="value in stats.ratio track by $index" ng-click="showMonth($index)">
+          <div style="margin-bottom: 2px"  ng-class="{'font-bold': monthPerformance.value100 != '--'}">{{value}}%
+        </div>
+        </div>
+        <div class="p5"></div>
+      </div>
+      <div class="row table-padding" style="margin-top: -2px">
+        <div style="padding:5px"></div>
+        <div class="square-background-4 text-1 color-darkblue" style="margin: 1px;border-radius: 0;" ng-repeat="value in stats.ratioValue track by $index" ng-click="showMonth($index)">
+          <div ng-show="{{value}}">{{value | shortNumberInMillionsOneDecimal}}</div>
+          <div ng-show="{{!value}}">--</div>
+        </div>
+        <div style="padding:5px"></div>
+      </div>
+        <div class="gray-area"></div>
+        
+       <div class="button-bar" style="height: 30px; margin-bottom: 35px;">
+      <a class="button button-tab header-title-3 p-t5" ng-click="selectedTab(0)" ng-class="{'active': currentTab == 0}">Advisory<hr></a>
+      <a class="button button-tab header-title-3 p-t5" ng-click="selectedTab(1)" ng-class="{'active': currentTab == 1}">M&A<hr></a>
+      <a class="button button-tab header-title-3 p-t5" ng-click="selectedTab(2)" ng-class="{'active': currentTab == 2}">TS<hr></a>
+      <a class="button button-tab header-title-3 p-t5" ng-click="selectedTab(3)" ng-class="{'active': currentTab == 3}">DIGITAL<hr></a>
+    </div>
+
+
+
+      <div ng-show="currentTab == 0" ng-include="'app/reporting/month/tabs-cf/tab-advisory.html'"></div>
+      <div ng-show="currentTab == 1" ng-include="'app/reporting/month/tabs-cf/tab-ma.html'"></div>
+      <div ng-show="currentTab == 2" ng-include="'app/reporting/month/tabs-cf/tab-ts.html'"></div>
+      <div ng-show="currentTab == 3" ng-include="'app/reporting/month/tabs-cf/tab-digital.html'"></div>

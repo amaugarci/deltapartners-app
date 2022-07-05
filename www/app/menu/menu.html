@@ -1,0 +1,85 @@
+<ion-side-menus enable-menu-with-back-views="false">
+  <ion-side-menu-content drag-content="toggledrag">
+    <ion-nav-bar class="bar-stable">
+      <ion-nav-back-button>BACK</ion-nav-back-button>
+
+
+      <ion-nav-buttons side="left">
+        <button class="button button-clear header-boton text-semibold fa-button-header font-menu-button p-l15 fa-button-header" menu-toggle="primary" ng-click="showMenu()">
+          <i class="fa fa-bars font-size18"></i> <!--MENU-->
+        </button>
+       <!-- <button class="button button-icon button-clear ion-navicon" menu-toggle="primary" ng-click="showMenu()">
+              </button> -->
+      </ion-nav-buttons>
+
+    </ion-nav-bar>
+
+    <ion-tabs class="tabs-icon-top tabs-color-active-positive {{$root.hideTabs}}" ng-class="{'ion-tab-hidden-accounts': modeCF}">
+      <ion-tab title="MY LEADS" icon-on="icon-tab-leads" icon-off="icon-tab-leads-off" href="#/tab/leads">
+        <ion-nav-view name="tab-leads"></ion-nav-view>
+      </ion-tab>
+
+      <ion-tab title="MY ACCOUNTS" class="tab-accounts"  icon-on="icon-tab-accounts" icon-off="icon-tab-accounts-off" href="#/tab/accounts">
+        <ion-nav-view name="tab-accounts"></ion-nav-view>
+      </ion-tab>
+
+      <ion-tab title="LOG" icon-on="icon-tab-log" icon-off="icon-tab-log-off" href="#/tab/log">
+        <ion-nav-view name="tab-log"></ion-nav-view>
+      </ion-tab>
+
+      <!-- <ion-tab title="REPORTING" icon-on="icon-tab-reporting" icon-off="icon-tab-reporting-off" href="#/tab/reporting">
+        <ion-nav-view name="tab-reporting"></ion-nav-view>
+      </ion-tab> -->
+
+      <!-- START OF HIDDEN TABS -->
+    <!--  <ion-tab title="Dashboard" class="ion-tab-hidden" icon-off="ion-ios-pulse" icon-on="ion-ios-pulse-strong" href="#/tab/dashboard">
+        <ion-nav-view name="tab-dashboard"></ion-nav-view>
+      </ion-tab> -->
+
+      <ion-tab title="ACC MEMBERS" class="ion-tab-hidden" icon-off="ion-ios-pulse" icon-on="ion-ios-pulse-strong" href="#/tab/accountsMembers">
+        <ion-nav-view name="tab-accounts-members"></ion-nav-view>
+      </ion-tab>
+      <!-- END OF HIDDEN TABS -->
+
+    </ion-tabs>
+
+  </ion-side-menu-content>
+
+  <ion-side-menu side="left">
+     <ion-content class="side-menu" scroll="false">
+      <div class="copyright color-white">2017 Copyright © <i class="text-bold">Delta Partners Group</i></div>
+      <ul class="list" style="text-align: center">
+        <img class="logo-menu" src="img/logo-delta-partner@2x.png">
+        <li style="padding-top: 12vh; padding-bottom: 4vh;">
+          <a class="header-title-3 color-3" nav-clear>MENU</a>
+        </li>
+       <!-- <li>
+          <a class="item header-title-2" menu-close nav-clear href="#/tab/dashboard">MY DASHBOARD</a>
+        </li>-->
+        <li class="row">
+          <div class="col m-r10 header-title-2 text-right" ng-class="modeCF ? 'color-gray' : ''">PIPE MC</div>
+          <label class="toggle toggle-calm">
+            <input type="checkbox" ng-model="modeCF" ng-change="setMode(modeCF)">
+              <div class="track">
+                <div class="handle">
+                </div>
+              </div>
+          </label>
+          <div class="col m-l10 header-title-2 text-left" ng-class="!modeCF ? 'color-gray' : ''">PIPE CF</div>
+        </li>
+        <li>
+          <a class="item header-title-2" menu-close href="#/tab/accountsMembers">ACC MEMBERS</a>
+        </li>
+        <li>
+          <a class="item header-boton text-semibold p-t5" menu-close ng-click="logout()"><i class="fa fa-sign-out" style="color:#7C8A95"></i>&nbsp;&nbsp;LOG OUT</a>
+        </li>
+        <li>
+        </li>
+
+
+      </ul>
+
+    </ion-content>
+  </ion-side-menu>
+
+</ion-side-menus>

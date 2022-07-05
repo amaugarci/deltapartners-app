@@ -1,0 +1,47 @@
+{
+  "project_info": {
+    "project_number": "661065924496",
+    "firebase_url": "https://delta-partners-group.firebaseio.com",
+    "project_id": "delta-partners-group",
+    "storage_bucket": "delta-partners-group.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:661065924496:android:14a4c5e027139c20",
+        "android_client_info": {
+          "package_name": "com.deltapartners.pipeapp"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "661065924496-b8i5puli5ctk9j7i0c28vs9k6n493gea.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBkgZ1yD-M4zuc6JJeNsBGCG9aAgNTLPDc"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "661065924496-b8i5puli5ctk9j7i0c28vs9k6n493gea.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "661065924496-m2eu05icoi4holl23chdst0n58gf5rdf.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.deltapartners.pipeapp"
+              }
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

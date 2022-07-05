@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <!--<meta http-equiv="Content-Security-Policy" content="
+                            default-src *;
+                            script-src 'self' 'unsafe-inline' 'unsafe-eval' *;
+                            style-src 'self' 'unsafe-inline' *">
+                            -->
+    <meta http-equiv="Content-Security-Policy" content="
+                            default-src * data: blob: ws: wss: gap://ready file://*;
+                            style-src * 'unsafe-inline';
+                            script-src * 'unsafe-inline' 'unsafe-eval';
+                            connect-src * ws: wss:;">
+    <meta name="format-detection" content="telephone=no">
+    <meta name="viewport"
+          content="viewport-fit=cover, width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title></title>
+
+    <link rel="manifest" href="manifest.json">
+
+    <!-- un-comment this code to enable service worker
+    <script>
+      if ('serviceWorker' in navigator) {
+        navigator.serviceWorker.register('service-worker.js')
+          .then(() => console.log('service worker installed'))
+          .catch(err => console.log('Error', err));
+      }
+    </script>-->
+
+
+    <!-- compiled css output -->
+    <link href="css/ionic.app.css" rel="stylesheet">
+
+    <!-- ionic/angularjs js -->
+    <script src="lib/ionic/js/ionic.bundle.js"></script>
+
+    <script src="js/lib/Chart.min.js"></script>
+    <script src="js/lib/angular-chart.min.js"></script>
+    <script src="js/lib/moment-with-locales.min.js"></script>
+    <script src="js/lib/angular-moment.min.js"></script>
+    <script src="js/lib/moment-timezone.js"></script>
+    <script src="lib/crypto-js/core.js"></script>
+    <script src="lib/js-sha256/build/sha256.min.js"></script>
+
+    <script src="js/lib/ionic-datepicker.bundle.min.js"></script>
+
+    <!-- cordova script (this will be a 404 during development) -->
+    <script src="lib/ngCordova/dist/ng-cordova.min.js"></script>
+    <script src="cordova.js"></script>
+
+    <!-- your app's js -->
+    <script src="js/app.js"></script>
+    <script src="app/login/loginCtrl.js"></script>
+    <script src="app/accounts/accountsCtrl.js"></script>
+    <script src="app/accountsMembers/accountsMembersCtrl.js"></script>
+    <script src="app/accounts/performance/performanceCtrl.js"></script>
+    <!-- <script src="app/dashboard/dashboardCtrl.js"></script> -->
+    <script src="app/leads/leadsCtrl.js"></script>
+    <script src="app/leads/edit/editLeadCtrl.js"></script>
+    <script src="app/leads/details/leadDetailsCtrl.js"></script>
+    <script src="app/leads/create/createLeadCtrl.js"></script>
+    <script src="app/leads/create/createLeadCFCtrl.js"></script>
+    <script src="app/log/logCtrl.js"></script>
+    <script src="app/log/view/logViewCtrl.js"></script>
+    <script src="app/login/loginCtrl.js"></script>
+    <script src="app/reporting/reportingCtrl.js"></script>
+    <script src="app/reporting/month/reportingMonthCtrl.js"></script>
+    <script src="app/menu/menuCtrl.js"></script>
+
+
+    <!-- directives -->
+
+    <script src="app/directives/gradientChart.js"></script>
+    <script src="app/directives/percentCircle.js"></script>
+    <script src="app/directives/replaceCommaByDot.js"></script>
+    <script src="app/directives/hideTabs.js"></script>
+    <script src="app/directives/formatCurrency.js"></script>
+    <script src="app/directives/formatBigNumber.js"></script>
+
+
+    <!-- services -->
+
+    <script src="app/services/customChart.js"></script>
+    <script src="app/services/customSlider.js"></script>
+
+    <script src="app/services/load.js"></script>
+    <script src="app/services/core.js"></script>
+    <script src="app/services/profile.js"></script>
+    <script src="app/services/msg.js"></script>
+    <script src="app/services/utils.js"></script>
+
+    <!-- api -->
+
+    <script src="app/services/api/login.js"></script>
+    <script src="app/services/api/logs.js"></script>
+    <script src="app/services/api/settings.js"></script>
+    <script src="app/services/api/leads.js"></script>
+    <script src="app/services/api/accounts.js"></script>
+    <script src="app/services/api/accountMembers.js"></script>
+    <script src="app/services/api/reports.js"></script>
+    <script src="app/services/api/categories.js"></script>
+    <script src="app/services/api/qualification.js"></script>
+    <script src="app/services/api/originations.js"></script>
+
+
+</head>
+<body ng-app="starter">
+<!--
+  The nav bar that will be updated as we navigate between views.
+-->
+<!--
+ <ion-nav-bar class="bar-stable">
+  <ion-nav-back-button>
+  </ion-nav-back-button>
+</ion-nav-bar>
+-->
+<!--
+  The views will be rendered in the <ion-nav-view> directive below
+  Templates are in the /templates folder (but you could also
+  have templates inline in this html file if you'd like).
+-->
+<ion-nav-view></ion-nav-view>
+</body>
+</html>

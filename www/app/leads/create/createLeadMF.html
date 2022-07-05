@@ -1,0 +1,263 @@
+<div class="title-bar-1">DEAL NAME - MF</div>
+
+<div class="m-t10 " ng-class="{'error-input': errors && errors.account_id}">
+    <label class="item item-input item-select custom-select ">
+        <select ng-model="accountSelect" ng-change="showSelectAccount(accountSelect)">
+            <option value="" disabled selected>Account:</option>
+            <option ng-repeat="account in data.accounts">{{account.name}}</option>
+        </select>
+    </label>
+    <span class="error-text" ng-if="errors.account_id">{{errors.account_id}}</span>
+</div>
+
+<div class="m-t10" ng-show="accountSelect != 'Others'">
+    <label class="item item-input item-select custom-select ">
+        <select ng-model="subaccountSelect" ng-change="showSelectSubaccount(subaccountSelect)">
+            <option value="" disabled selected>Subaccount:</option>
+            <option ng-repeat="account in data.subaccounts">{{account.name}}</option>
+        </select>
+    </label>
+</div>
+
+<label class="item item-input m-l-r-15 input-text m-t10" ng-show="accountSelect == 'Others'">
+    <input type="text" class="text-input-1 p-l5 item-input-placeholder" ng-model="data.lead.sub_account_name"
+           placeholder="Account name for Others">
+</label>
+
+<!--
+<label ng-show="subaccountSelect == 'Others'" class="item item-input m-l-r-15 input-text m-t10">
+  <input type="text" class="text-input-1 p-l5 item-input-placeholder" ng-model="data.lead.subaccount" placeholder="Insert subaccount">
+</label> -->
+<div ng-class="{'error-input': errors && errors.name}">
+    <label class="item item-input m-l-r-15 input-text m-t10">
+        <input type="text" class="text-input-1 p-l5 item-input-placeholder" ng-model="data.lead.name"
+               placeholder="Oportunity Name">
+    </label>
+    <span class="error-text" ng-if="errors.name">{{errors.name}}</span>
+</div>
+<div class="m-t10" ng-class="{'error-input': errors && errors.origination_id}">
+    <label class="item item-input item-select custom-select ">
+        <select ng-model="data.lead.origination_id">
+            <option value="" disabled selected>Origination:</option>
+            <option ng-repeat="origination in data.originations" ng-value="origination.id">{{origination.name}}</option>
+        </select>
+    </label>
+    <span class="error-text" ng-if="errors.origination_id">{{errors.origination_id}}</span>
+</div>
+<div class="m-t10" ng-class="{'error-input': errors && errors.number_of_competing_firms}">
+    <label class="item item-input item-select custom-select ">
+        <select ng-model="data.lead.number_of_competing_firms">
+            <option value="" disabled selected>Number of firms competing:</option>
+            <option
+                    ng-repeat="(key, value) in data.competing_firms"
+                    ng-value="key"
+                    ng-selected="data.lead.number_of_competing_firms == key">{{value}}</option>
+        </select>
+    </label>
+    <span class="error-text" ng-if="errors.number_of_competing_firms">{{errors.number_of_competing_firms}}</span>
+</div>
+<div class="title-bar-1 title-bar-1-margin-top">GEOGRAPHICAL AREAS</div>
+
+<div class="m-t10 " ng-class="{'error-input': errors && errors.leads_consulting_location_id}">
+    <label class="item item-input item-select custom-select">
+        <select ng-model="locationSelect" ng-change="setLocation(locationSelect)">
+            <option value="" disabled selected>Location:</option>
+            <option ng-repeat="(key, value) in data.locations" value="{{value}}">{{key}}</option>
+        </select>
+    </label>
+    <span class="error-text" ng-if="errors.leads_consulting_location_id">{{errors.leads_consulting_location_id}}</span>
+</div>
+
+<label class="item item-input m-l-r-15 input-text m-t10">
+    <input type="text" class="text-input-1 p-l5 item-input-placeholder" ng-model="data.lead.location_city"
+           placeholder="Project location (city)">
+</label>
+
+<div class="title-bar-1 title-bar-1-margin-top">SET START DATE</div>
+<div class="text-1 color-darkblue date-bar-1" ng-click="openDatePickerNew()" ng-show="data.lead.start_date == null">
+    Select date
+</div>
+<div class="text-1 color-darkblue date-bar-1" ng-click="openDatePickerNew()" ng-show="data.lead.start_date != null">
+    {{data.lead.start_date*1000 | amDateFormat:"DD MMM 'YY"}}
+</div>
+
+<div ng-class="{'error-input': errors && errors.start_date}" ng-if="errors.start_date">
+    <span class="error-text" ng-if="errors.start_date">{{errors.start_date}}</span>
+</div>
+
+<div class="title-bar-1 title-bar-1-margin-top">PROBABILITY</div>
+<div class="probability-container" style="height:inherit; margin-top: 14px !important"
+     ng-repeat="sliderIndex in [{'index':0}]" ng-click="updateProbability()"
+     ng-include="'app/leads/templates/customSlider.html'"></div>
+<div ng-class="{'error-input': errors && errors.probability}">
+    <span class="error-text" ng-if="errors.probability">{{errors.probability}}</span>
+</div>
+<div class="title-bar-1">ECONOMICS</div>
+
+<div class="row" ng-repeat="phase in data.lead.phases" style="text-align: center;margin-top: -18px;">
+    <div class="col col-20 text-1 text-bold color-gray m-a">Phase {{$index+1}}</div>
+    <div class="col col-40">
+        <div class="row" ng-class="{'error-input': errors && errors.phasesWeeks && errors.phasesWeeks[$index]}">
+            <div class="text-1 color-darkblue" style="margin: auto">Weeks:</div>
+            <label class="item item-input square-background-1">
+                <input type="number" ng-change="updateTotalTheoretical()" class="color-darkblue" ng-model="phase.weeks">
+            </label>
+        </div>
+    </div>
+    <div class="col col-40">
+        <div class="row" ng-class="{'error-input': errors && errors.phasesFte && errors.phasesFte[$index]}">
+            <div class="text-1 color-darkblue" style="margin: auto">FTEs:</div>
+            <label class="item item-input square-background-1">
+                <input type="number" ng-change="updateTotalTheoretical()" class="color-darkblue" ng-model="phase.fte">
+            </label>
+        </div>
+    </div>
+</div>
+
+<!-- <div class="more-phases" ng-click="addPhase()">+ <i style="text-decoration: underline;"> ADD PHASE</i></div> -->
+<div class="row">
+    <div class="col col-50 more-phases" ng-click="addPhase()" ng-show="data.lead.phases.length < 3">+
+        <i style="text-decoration: underline;"> ADD PHASE</i>
+    </div>
+    <div class="col col-50 more-phases" ng-click="removePhase()" ng-show="data.lead.phases.length > 1">-
+        <i style="text-decoration: underline;"> REMOVE PHASE</i>
+    </div>
+    <div ng-class="{'error-input': errors && errors.phases}">
+        <span class="error-text" ng-if="errors.phases">{{errors.phases}}</span>
+    </div>
+</div>
+<div class="background-with-padding-1 background-with-padding-3">
+    <div class="row p-t10">
+
+        <div class="col label-text-1 text-center"><i class="text-1 color-gray">Fees / FTE: </i><i
+                class="text-1 color-darkblue">{{data.lead.theoreticalRevenues.fte_fees | number}}</i></div>
+        <div class="col label-text-1 text-center"><i class="text-1 color-gray">Expenses: </i><i
+                class="text-1 color-darkblue">{{data.lead.theoreticalRevenues.expenses_percentage}}%</i></div>
+    </div>
+
+    <div class="row" style="margin-left: 10px; padding-top: 5px">
+        <div class="col header-title-4 color-darkblue">Total Theoretical</div>
+    </div>
+
+    <div class="row remove-padding-top-all p-b10" style="color: #252241;
+    font-size: 21px;
+    font-weight: bold; margin-left: 10px;">
+        <div class="col col-33 header-title-4 color-darkblue">Revenue:</div>
+        <div class="col col-66 text-right p-r20 header-title-4 color-darkblue">{{data.totalTheoretical|
+            currency:undefined:0}}
+        </div>
+    </div>
+</div>
+
+<ion-checkbox ng-model="overwriteRevenue" ng-change="toggleOverwriteRevenue(overwriteRevenue)"
+              class="checkbox-square checkbox-padding text-1 color-darkblue m-t15 m-b10 text-left">
+    Overwrite Revenue Amount
+</ion-checkbox>
+
+<div ng-show="overwriteRevenue" class="background-with-padding-2">
+    <div ng-class="{'error-input': errors && errors.overwritten_total_expenses}">
+        <div class="row">
+            <div class="col col-33 text-1 color-gray m-a text-left p-l10">Project fees:</div>
+            <label class="col square-background-2 item item-input square-background-1">
+                <input type="number" class="text-1 color-darkblue" style="text-align: left; padding-left: 15px;"
+                       ng-model="data.lead.overwrittenRevenues.overwritten_total_expenses">
+            </label>
+        </div>
+        <span class="error-text" ng-if="errors.overwritten_total_expenses">{{errors.overwritten_total_expenses}}</span>
+    </div>
+    <div ng-class="{'error-input': errors && errors.overwritten_total_fees}">
+        <div class="row">
+            <div class="col col-33 text-1 color-gray m-a text-left p-l10">Expenses:</div>
+            <label class="col square-background-2 item item-input square-background-1">
+                <input type="number" class="text-1 color-darkblue" style="text-align: left; padding-left: 15px;"
+                       ng-model="data.lead.overwrittenRevenues.overwritten_total_fees">
+            </label>
+        </div>
+        <span class="error-text" ng-if="errors.overwritten_total_fees">{{errors.overwritten_total_fees}}</span>
+    </div>
+</div>
+<!--<ion-checkbox class="checkbox-square checkbox-padding text-1 color-darkblue" ng-model="data.lead.overwritten_revenue" style="margin-top: 5px; margin-bottom: 10px; text-align: left">
+  Overwrite Revenue Amount
+</ion-checkbox>-->
+<div class="p-l10 p-r10" ng-show="overwriteRevenue">
+    <div class="header-title-4 background-darkbluedelta color-white row" style="height: 60px">
+        <i class="col text-center m-a">
+            Actual Revenue:
+        </i>
+        <i class="col text-right p-r15 m-a" ng-show="overwriteRevenue">
+            {{data.lead.overwrittenRevenues.overwritten_total_expenses +
+            data.lead.overwrittenRevenues.overwritten_total_fees | currency:undefined:0}}
+        </i>
+        <i class="col text-right p-r15 m-a" ng-show="!overwriteRevenue">
+            {{data.totalTheoretical| currency:undefined:0}}
+        </i>
+    </div>
+</div>
+<div class="subheader-3 row p-l20 p-r20" ng-show="overwriteRevenue">
+    <i class="col col-40 text-1 color-gray text-left m-a">
+        Difference vs.<br>theoretical fees:
+    </i>
+
+    <i class="col col-60 text-1 color-darkblue text-right m-a" ng-show="overwriteRevenue">
+        {{data.lead.overwrittenRevenues.overwritten_total_expenses +
+        data.lead.overwrittenRevenues.overwritten_total_fees - data.totalTheoretical | currency:undefined:0}}
+        ({{((100/data.totalTheoretical*(data.lead.overwrittenRevenues.overwritten_total_expenses +
+        data.lead.overwrittenRevenues.overwritten_total_fees))-100).toFixed(2)}} %)
+
+    </i>
+
+    <i class="col col-60 text-1 color-darkblue text-right m-a" ng-show="!overwriteRevenue">
+        0 (0.00 %)
+    </i>
+</div>
+
+<div class="col p-l15">
+
+    <div class="row" style="margin-left: -20px">
+        <ion-checkbox ng-model="enableSuccessFee" ng-change="toggleEnableSuccessFee(enableSuccessFee)"
+                      class="checkbox-square checkbox-padding text-1 color-darkblue p-r0 m-t0"
+                      style="margin-top: 0px; left:0px">
+        </ion-checkbox>
+        <div class="margin-auto-t-b p-r10 text-1 color-darkblue">Success Fee:</div>
+        <div ng-class="{'error-input': errors && errors.success_fees_amount}">
+            <label class="item item-input rectangle-background-1">
+                <input type="number" ng-disabled="!enableSuccessFee" class="text-1 color-darkblue p-l15 input-currency"
+                       style="height: inherit;" ng-model="data.lead.successFees.amount">
+            </label>
+            <span class="error-text" ng-if="errors.success_fees_amount">{{errors.success_fees_amount}}</span>
+        </div>
+    </div>
+</div>
+<div ng-show="enableSuccessFee">
+    <div class="title-bar-1 title-bar-1-margin-top">SUCCESS FEE PROBABILITY</div>
+    <div ng-class="{'error-input': errors && errors.success_fees_probability}">
+        <div class="probability-container"
+             style="height:inherit" ng-repeat="sliderIndex in [{'index':1}]"
+             ng-click="setSuccessFeeProbability()" ng-include="'app/leads/templates/customSlider.html'"></div>
+        <span class="error-text" ng-if="errors.success_fees_probability">{{errors.success_fees_probability}}</span>
+    </div>
+    <div ng-class="{'error-input': errors && errors.success_fees_expected_date}">
+        <div class="row">
+            <div class="col col-50 margin-auto-t-b p-r10 text-1 color-darkblue">Expected Closure Date:</div>
+            <!-- <div class="col col item item-input rectangle-background-1" ></div> -->
+            <!-- <div ng-click="openDatePicker()"><label class="col item item-input rectangle-background-1">{{startDate}}</label></div>-->
+            <div class="text-1 color-darkblue date-bar-1 m-l15" style="width: 150px"
+                 ng-click="openDatePicker('closureDate')" ng-show="data.lead.successFees.expected_date == null">Select
+                date
+            </div>
+            <div class="text-1 color-darkblue date-bar-1 m-l15" style="width: 150px"
+                 ng-click="openDatePicker('closureDate')" ng-show="data.lead.successFees.expected_date != null">
+                {{data.lead.successFees.expected_date*1000 | amDateFormat:"DD MMM 'YY"}}
+            </div>
+        </div>
+        <span class="error-text" ng-if="errors.success_fees_expected_date">{{errors.success_fees_expected_date}}</span>
+    </div>
+
+</div>
+
+<div ng-include="'app/leads/create/qualification.html'"></div>
+
+
+<button class="button-big-1" ng-click="createLead()">CREATE</button>
+
+<div class="padding-10"></div>

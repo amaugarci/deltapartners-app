@@ -1,0 +1,58 @@
+
+<ion-view view-title="MY ACCOUNTS">
+  
+  <ion-content>
+<ion-refresher
+    pulling-text="Pull to refresh..."
+    on-refresh="loadData(true)">
+  </ion-refresher>
+    
+<ion-list class="notes-list">
+                            <ion-item class="note-item item-icon-right p-l0 p-r0 borderless" ng-repeat="account in data.accounts" ng-click="showAccount({{account.id}})">
+                              <div class="" style="padding-left: 0px; padding-right: 50px">
+                                <div class="row" style="padding-left: 25px;margin-bottom: 10px">
+                                  <i class="header-title-5 color-darkblue text-truncate" style="padding-left: 10px;">{{account.name}}</i>
+                                </div>
+                                <div class="row" style="padding: 0">
+                                  <div class="col col-75" style="padding-left: 0">
+                                    <div style="padding-bottom: 12px;">
+                              <a class="item-icon-left text-1 color-gray p-l25 borderless m0 p-t0 p-b0">
+                               
+                                <i class="fa fa-bullseye color-gray font-size14 p-l10"></i>
+                                  Target:
+                                <i class="text-color-2 text-1 color-darkblue"> {{account.overview.target | currency:undefined:0}}</i>
+                              </a>
+                                    </div>
+                                    <div>
+                              <a class="item-icon-left text-1 color-gray p-l25 borderless m0 p-t0 p-b0">
+                                <i class="fa fa-check-circle-o color-gray font-size14 p-l10"></i>
+                                  Closed:
+                                <i class="text-color-2 text-1 color-darkblue"> {{account.overview.closed | currency:undefined:0}}</i>
+                              </a>
+                                    </div>
+                                    </div>
+                  
+                                  <div class="col col-25">
+                                      <div class="active-border active-border-high">
+   
+         <div class="circle color-gray circle-reduced-size" circle-directive color="gray" percent="{{account.overview.achievement.toFixed(0)}}" ></div>
+
+
+    </div>
+                                  </div>
+                                  </div>
+                                </div>
+                                  
+                                <i class="icon fa fa-angle-right font-size30 color-5"></i>
+                             
+                                                           <div class="row-separator" ng-show="$index+1 != accounts.length"> </div>
+
+                            </ion-item>
+                        </ion-list>
+    <ion-infinite-scroll
+    ng-if="!data.noMoreData"
+    on-infinite="loadData(false)"
+    distance="1%">
+  </ion-infinite-scroll>
+  </ion-content>
+</ion-view>

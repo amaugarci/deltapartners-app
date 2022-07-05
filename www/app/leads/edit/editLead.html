@@ -1,0 +1,14 @@
+<ion-view view-title="{{titulo}}" hide-tabs can-swipe-back="false">
+  <ion-nav-buttons side="right">
+    
+    <button class="button button-clear header-boton text-semibold fa-button-header p-r15" ng-click="updateLead()"
+     ng-show="!data.disabled"
+    >
+        <i class="fa fa-check"></i> UPDATE
+    </button>
+  </ion-nav-buttons>
+  <ion-content>
+    <div ng-if="!modeCF" ng-include="'app/leads/edit/editLeadMF.html'"></div>
+    <div ng-if="modeCF" ng-include="'app/leads/edit/editLeadCF.html'"></div>
+  </ion-content>
+</ion-view>

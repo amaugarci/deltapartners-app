@@ -1,0 +1,55 @@
+<!-- block tittle -->
+<div class="title-bar-1">
+    QUALIFICATION MATRIX
+</div>
+<!-- end block tittle -->
+
+<div class="row">
+    <div class="col p-l10">
+        <!-- main category -->
+        <div class="background-with-padding-2" ng-repeat="block in data.qualifications" style="margin-bottom: 30px !important; padding: 10px; margin: 0px;">
+            <div class="text-bold color-gray m-a ng-binding" style="font-size: 15px; text-align: center;">
+                {{block.name}}
+            </div>
+
+            <!-- block questions -->
+            <div ng-if="block.questions.length > 0" ng-repeat="question in block.questions">
+
+                <div class=" margin-auto-t-b p-t10 text-1 color-darkblue text-left">
+                    {{question.title}}
+                </div>
+
+                <div class="m-t10" style="" ng-class="{'error-input': errors && errors.qualifications_answers && errors.qualifications_answers[question.id]}">
+                    <label class="item item-input item-select custom-select" style="width: 100%; margin-left: 0px; padding: 6px 0 5px 0px; background-color: #f2f2f2;">
+                        <select ng-model="data.answerSelect[question.id]" ng-change="showSelectAnswer(data.answerSelect[question.id], question, block)" style="background-color: #f2f2f2;">
+                            <option value="" disabled selected>Selected:</option>
+                            <option ng-repeat="answer in question.answers" value="{{answer}}">{{answer.text}}</option>
+                        </select>
+                    </label>
+                    <span class="error-text" ng-if="errors.qualifications_answers[question.id]">{{errors.qualifications_answers[question.id]}}</span>
+                </div>
+            </div>
+            <!-- end block questions -->
+        </div>
+        <!-- end main category -->
+    </div>
+</div>
+
+<!-- qualification total -->
+<!--
+<div class="row">
+    <div class="col p-l15">
+        <label class="item item-input m-l-r-15 input-text m-t10">
+            Total:
+            <input type="text" class="text-1 color-darkblue p-l15 input-currency ng-pristine ng-untouched ng-valid ng-empty"
+                   ng-disabled="true"
+                   ng-model="data.qualificationMatrix.total" placeholder="" style="font-size: 16px !important; text-align: left; margin-top: -5px; background-color: #f2f2f2;" value="0" />
+        </label>
+    </div>
+</div>
+-->
+<!-- end qualification total -->
+
+<style>
+    .no-margins .popup-buttons button { margin-right: 5px !important; }
+</style>

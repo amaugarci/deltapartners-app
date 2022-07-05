@@ -1,0 +1,24 @@
+<ion-view view-title="Login" class="login-style">
+  <ion-content >
+    <div style="height: 100vh; width:100vw; position: absolute; pointer-events: none"><div class="copyright">2017 Copyright © <i class="text-bold">Delta Partners Group</i></div></div>
+    
+    <img class="logo-login" src="img/logo-delta-partner@2x.png">
+    <div class="col" style="text-align: center;">
+    <div class="header-title-3" style="color:white; padding-top: 76px"></div>
+<form name="loginForm">
+    <label class="item item-input label-input" style="margin-top: 33px; margin-left: 10%;margin-right: 10%;">
+  <input type="text" class="color-gray" placeholder="Login*" ng-model="auth.email">
+</label>
+
+<label class="item item-input label-input" style="margin-top: 10px;margin-left: 10%;margin-right: 10%;">
+  <input type="password" class="color-gray" placeholder="Password*" ng-model="auth.password">
+</label>
+
+<div class="login-mandatory-text">*All fields are mandatory.</div>
+
+<button type="submit" class="button-big-1" style="margin-left: 0" ng-click="auth.login()" ng-disabled="!auth.email || !auth.password" >ENTER</button>
+</form>
+
+    </div>
+  </ion-content>
+</ion-view>

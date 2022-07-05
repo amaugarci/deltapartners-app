@@ -1,0 +1,89 @@
+<style>
+    .accesible-icon {
+        width: 24px !important;
+        height: 24px !important;
+        padding: 4px 4px;
+        font-size: 14px !important;
+        position: absolute !important;
+        top: 25px !important;
+        right: 9.5% !important;
+    }
+    .font-size13 { font-size: 13px !important; }
+</style>
+<p class="text-center font-size14 header-title-5 margin-top-20" ng-if="!loading && data.leads.length == 0">You currently do not have any lead assigned in this pipeline</p>
+<ion-list class="notes-list">
+    <ion-item class="note-item item-icon-right p-r5 borderless"
+          ng-repeat="lead in data.leads" 
+          ng-click="editLead(lead.id,lead.accessible_by_partner)">
+
+        <div>
+            <!-- original -->
+            <div class="row m-b5 p0" style="margin-top: -3px !important" ng-if="getTypeOf(lead.accessible_by_partner)=='undefined'">
+                <div class="col col-75" style="white-space: nowrap; overflow: hidden; text-overflow: ellipsis; padding-left: 0px;">
+                    <i class="font-size13 header-title-5 text-truncate">
+                        {{lead.account}} <i ng-show="lead.subAccount">- {{lead.subAccount}}</i>
+                        <br />
+                        {{lead.name}}
+                    </i>
+                </div>
+
+                <div class="col col-25 text-right">
+                    <i class="icon fa fa-angle-right font-size30 color-5" ng-hide="lead.accessible_by_partner == false" style="top: -30px; right: 30px;"></i>
+                </div>
+            </div>
+
+            <!-- MyAccounts > Pipe section -->
+            <div class="row m-b5 p0" style="margin-top: -3px !important" ng-if="getTypeOf(lead.accessible_by_partner)!='undefined'">
+                <div class="col col-75" style="white-space: nowrap; overflow: hidden; text-overflow: ellipsis;">
+                    <i class="font-size13 header-title-5 text-truncate">
+                        {{lead.account}} <i ng-show="lead.subAccount">- {{lead.subAccount}}</i>
+                        <br />
+                        {{lead.name}}
+                    </i>
+                </div>
+            </div>
+
+            <!-- pipe -->
+            <div class="row p0 m-b-5 m-t0" ng-if="getTypeOf(lead.accessible_by_partner)!='undefined'">
+                <div class="col col-75 p-l15">
+                    <div class="row text-color-3 m-t-15" ng-if="lead.accessible_by_partner" ng-click="editLead({{lead.id}})">
+                        <i id="edit-icon" class="log-icon icon fa ion-edit accesible-icon"></i>
+                    </div>
+                </div>
+                <div class="col col-25 m-a">
+                    <div class="row text-color-3" ng-if="!lead.accessible_by_partner" ng-click="editLead({{lead.id}})">
+                        <i class="log-icon icon fa ion-eye accesible-icon"></i>
+                    </div>
+                </div>
+            </div>
+            <!-- end pipe -->
+           
+            <div class="row p0 m-b-5 m-t0">
+                <div class="col col-50 p-l0 m-a">
+                    <div class="">
+                        <i class="text-1 color-gray">Start date: </i>
+                        <i class="text-1 color-darkblue" ng-show="lead.start_date != null">{{lead.start_date*1000 | amDateFormat:"DD MMM 'YY"}}</i>
+                    </div>
+                    <div>
+                        <i class="text-1 color-gray">Revenue: </i>
+                        <i class="text-1 color-darkblue">{{lead.actual_revenue | currency:undefined:0}}</i>
+                    </div>
+                </div>
+
+                <div class="col col-25 m-a">
+                    <div class="days-in-pipe" ng-show="lead.is_in_pipe && lead.days_in_pipe > 75">
+                        <i> {{lead.days_in_pipe}} days<br> in pipe</i>
+                    </div>
+                </div>
+
+                <div class="col col-25 m-a">
+                    <div class="active-border active-border-high">
+                        <div class="circle color-{{lead.probability}}" circle-directive color="color-{{lead.probability}}" percent="{{lead.probability}}"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="cell-separator" ng-show="$index+1 != leads.length"></div>
+    </ion-item>
+</ion-list>

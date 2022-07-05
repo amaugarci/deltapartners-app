@@ -1,0 +1,107 @@
+
+<div class="title-bar-1 m-t20">PERFORMANCE VS TARGET</div>
+<div class="row remove-padding-top-all">
+  <div class="col col-45 text-1 color-gray text-right"><i>100%: </i><i class="text-1 color-darkblue">{{data.performance.performance_vs_target.pct100 | currency:undefined:0}}</i></div>
+  <div class="col col-10 text-1 color-gray horizontal-separator">|</div>
+  <div class="col col-45 text-1 color-gray text-left"><i>90%: </i><i class="text-1 color-darkblue">{{data.performance.performance_vs_target.pct90 | currency:undefined:0}}</i></div>
+</div>
+
+<div class="performance-bar-1"><div class="col col-45 text-1 color-gray text-center" style="background: #f2f2f2;"><i>Total Closed: </i><i class="header-title-3 color-darkblue">{{data.performance.performance_vs_target.total | currency:undefined:0}}</i></div></div>
+
+
+
+ <div class="row  remove-padding-bottom-all text-center">
+   <div class="col">
+     <div class="col col-45 text-1 color-gray font-size10"><i>BoY target: </i><i class="text-1 color-darkblue ">{{data.performance.performance_vs_target.boy_target | currency:undefined:0}}</i></div>
+     <div class="col col-45 text-1 color-gray font-size10 m-t-8 m-b5"><i>% achievement</i></div>
+     <div class="circle color-gray circle-reduced-size" circle-directive color="gray" ng-if="data.performance.performance_vs_target.boy_target_achievement" percent="{{data.performance.performance_vs_target.boy_target_achievement.toFixed(0)}}"></div>
+   </div>
+   <div class="col">
+     <div class="col col-45 text-1 color-gray font-size10"><i>Latest target: </i><i class="text-1 color-darkblue">{{data.performance.performance_vs_target.latest_target | currency:undefined:0}}</i></div>
+     <div class="col col-45 text-1 color-gray font-size10 m-t-8 m-b5"><i >% achievement</i></div>
+     
+     <div class="circle color-gray circle-reduced-size" circle-directive color="gray" ng-if="data.performance.performance_vs_target.latest_target_achievement" percent="{{data.performance.performance_vs_target.latest_target_achievement.toFixed(0)}}"></div>
+   </div>
+ </div>
+<div class="title-bar-1 title-bar-1-margin-top">PIPELINE SIZE (Adjusted to prob.)</div>
+
+  <div class="row remove-padding-top-all text-center">
+    <div class="col col-5"></div>
+    <div class="col col-20 col-offset-5 text-1 color-darkblue">
+      <div>70%</div>
+      <div>50%</div>
+      <div>10%</div>
+      </div>
+    <div class="col col-40">
+        <progress id="progressbar" max="1" ng-value="data.performance.pipeline_size.total70Pct/data.performance.pipeline_size.total"> </progress> 
+        <progress id="progressbar" max="1" ng-value="data.performance.pipeline_size.total50Pct/data.performance.pipeline_size.total"> </progress> 
+        <progress id="progressbar" max="1" ng-value="data.performance.pipeline_size.total10Pct/data.performance.pipeline_size.total"> </progress> 
+    </div>
+    <div class="col text-1 color-darkblue" >
+       <div>{{data.performance.pipeline_size.total70Pct | currency:undefined:0}}</div>
+       <div>{{data.performance.pipeline_size.total50Pct | currency:undefined:0}}</div>
+       <div>{{data.performance.pipeline_size.total10Pct | currency:undefined:0}}</div>
+      
+     
+    </div>
+    <div class="col col-5"></div>
+  </div>
+<div class="row remove-padding-bottom-all text-center">
+  <div class="col col-5"></div>
+    <div class="col col-20 performance-bar-2">
+      <div class="text-1 text-bold color-darkblue">TOTAL</div>
+      </div>
+    <div class="col col-40 performance-bar-2 p-r10">
+        <!--<progress id="progressbar" class="progress-white-background" max="100" value="100"> </progress>        -->
+    </div>
+    <div class="col performance-bar-2">
+      <div class="text-1 color-darkblue text-bold">{{data.performance.pipeline_size.total | currency:undefined:0}}</div>
+    </div>
+<div class="col col-5"></div>
+  </div>
+
+<div class="title-bar-1 title-bar-1-margin-top">CONVERSION RATES</div>
+<div class="row p-l15 p-r15">
+  <div class="col text-1 color-darkblue text-left">Closed</div>
+<div class="col text-1 color-darkblue text-right">Lost</div>
+</div>
+<!--<progress id="progressbar" class="progress-bar-big" max="100" ng-value="data.performance.conversion_rates.closed*100/(data.performance.conversion_rates.lost+data.performance.conversion_rates.closed)"> </progress>-->
+<progress id="progressbar" class="progress-bar-big" max="1" ng-value="(data.performance.conversion_rates.closed)/(data.performance.conversion_rates.closed+data.performance.conversion_rates.lost)"> </progress>
+<div class="row p-l15 p-r15 p-t0">
+  <div class="col text-1 color-darkblue text-bold text-left">{{data.performance.conversion_rates.closed | currency:undefined:0}}</div>
+<div class="col text-1 color-gray text-bold text-right">{{data.performance.conversion_rates.lost | currency:undefined:0}}</div>
+</div>
+
+<div class="col text color-gray remove-padding-bottom-all m-l5"><i class="m-l10">Conversion: </i><i class="text-1 color-darkblue">&nbsp;&nbsp;{{data.performance.conversion_rates.conversion}}%</i></div>
+
+<div class="title-bar-1 title-bar-1-margin-top m-b30">{{currentYear}} CLOSED PIPE ($m)</div>
+
+
+<div class="row m-b20" style="margin-left: 8vw !important">
+      <div class="col col-10 col-offset-20 square-closed"></div>
+      <div class="col col-20 text-1 color-darkblue p-t0 text-left">Closed</div>
+ 
+      <div class="col col-10 square-pipe"></div>
+       <div class="col col-20 text-1 color-darkblue p-t0 text-left">Pipe</div>
+  </div>
+
+<!-- START OF GRAPH -->
+<div style="height: 175px; padding-top: 5px;"> <!-- this sets graph height -->
+    <div class="row graph-numbers graph-numbers-primary text-bold font-size11" style="padding-top: 150px; bottom: initial">
+<div class="col z-index10" ng-repeat="value in data.graph[0] track by $index"> {{value | shortNumberInMillionsOneDecimal}} </div>
+</div>
+<div class="row graph-numbers graph-numbers-secondary text-bold">
+<div class="col" ng-repeat="value in data.graph[1] track by $index" ng-style="{'margin-top':((maxValue-dataMax[$index])/maxValue)*175-20+'px'}"> {{value-data.graph[0][$index] | shortNumberInMillionsOneDecimal}}</div>
+</div>
+
+<canvas  height="inherit" width="100" id="chart" class="graph-adapt-height gradient-gray chart chart-bar pos-absolute" chart-data="data.graph" chart-labels="labels" chart-series="series" chart-options="options"
+chart-dataset-override="datasetOverride" chart-click="onClick" chart-colors="colours">
+</canvas>
+</div>
+</div>
+<!-- END OF GRAPH -->
+  <div class="horizontal-line-4"></div>
+  <div class="row graph-numbers font-size11 pos-relative m-t-20">
+  <div class="col text-bold color-darkblue font-size8" ng-repeat="value in labels track by $index"> {{value}} </div>
+  </div>
+  

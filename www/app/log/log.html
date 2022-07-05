@@ -1,0 +1,36 @@
+<ion-view view-title="PIPE CHANGES (LOG)">
+    <ion-content>
+        <ion-refresher
+                pulling-text="Pull to refresh..."
+                on-refresh="loadData(true)">
+        </ion-refresher>
+        <ion-list class="notes-list">
+            <ion-item class="note-item item-icon-right p-r15 borderless" ng-repeat="message in data.messages">
+                <div class="row">
+                    <div class=" col col-20">
+                        <div class="row text-color-3 m-t-15"><i class="log-icon icon fa {{message.icon}}"></i></div>
+                    </div>
+                    <div class="col col-80 p0">
+                        <div class="row p-l0 p-r0 m-b-15">
+                            <div class="item-text-wrap text-1 text-left" style="padding-bottom: 12px;">
+                                <div>
+                                    <div ng-bind-html="message.event.messageHtml"></div>
+                                    <div class="row text font-size13 color-gray p-l0">
+                                        <i class="fa fa-clock-o p-r10 " style="margin-top: auto;margin-bottom: auto"></i> {{message.timestamp*1000 | amDateFormat:'DD MMM YYYY'}}
+                                    </div>
+                                    <div ng-show="{{message.event.collapsable}}" class="logs-qualitative-comment" style="margin: 0 !important;" ng-bind="message.event.messageDotted"></div>
+                                    <button class="button-big-1 log-button-more"
+                                            ng-click="showModalMessageDetails({{message}})"
+                                            ng-show="{{message.event.collapsable}}">MORE <strong> <i class="fa fa-angle-right log-ico-button-more" style=""></i></strong>
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="cell-separator2" ng-show="$index+1 != messages.length"></div>
+            </ion-item>
+        </ion-list>
+        <ion-infinite-scroll ng-if="!data.noMoreData" on-infinite="loadData(false)" distance="1%"></ion-infinite-scroll>
+    </ion-content>
+</ion-view>

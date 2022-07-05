@@ -1,0 +1,115 @@
+{
+    "questions" : [
+    {
+        "id": 1,
+        "name": "Strategic Considerations",
+        "qualitative": 0,
+        "questions": [
+            {
+                "id": 1,
+                "title": "Pregunta 1",
+                "weight": 30,
+                "created_at": 1525255200,
+                "updated_at": 1525255200,
+                "answers": [
+                    {
+                        "id": 1,
+                        "text": "Respuesta1",
+                        "weight": 30,
+                        "created_at": 1525255200,
+                        "updated_at": 1525255200
+                    },
+                    {
+                        "id": 2,
+                        "text": "Respuesta2",
+                        "weight": 10,
+                        "created_at": 1525255200,
+                        "updated_at": 1525255200
+                    },
+                    {
+                        "id": 3,
+                        "text": "Respuesta3",
+                        "weight": 20,
+                        "created_at": 1525255200,
+                        "updated_at": 1525255200
+                    }
+                ]
+            },
+            {
+                "id": 2,
+                "title": "Pregunta 2",
+                "weight": 30,
+                "created_at": 1525255200,
+                "updated_at": 1525255200,
+                "answers": [
+                    {
+                        "id": 1,
+                        "text": "Respuesta1",
+                        "weight": 30,
+                        "created_at": 1525255200,
+                        "updated_at": 1525255200
+                    },
+                    {
+                        "id": 2,
+                        "text": "Respuesta2",
+                        "weight": 10,
+                        "created_at": 1525255200,
+                        "updated_at": 1525255200
+                    },
+                    {
+                        "id": 3,
+                        "text": "Respuesta3",
+                        "weight": 20,
+                        "created_at": 1525255200,
+                        "updated_at": 1525255200
+                    }
+                ]
+            }
+        ]
+    },
+    {
+        "id": 2,
+        "name": "Short-term commercial considerations",
+        "qualitative": 0,
+        "questions": 
+        [
+            {
+                "id": 1,
+                "title": "Titulo 2 ",
+                "weight": 30,
+                "created_at": 1525255200,
+                "updated_at": 1525255200,
+                "answers": [
+                    {
+                        "id": 1,
+                        "text": "Respuesta1",
+                        "weight": 30,
+                        "created_at": 1525255200,
+                        "updated_at": 1525255200
+                    },
+                    {
+                        "id": 2,
+                        "text": "Respuesta2",
+                        "weight": 10,
+                        "created_at": 1525255200,
+                        "updated_at": 1525255200
+                    },
+                    {
+                        "id": 3,
+                        "text": "Respuesta3",
+                        "weight": 20,
+                        "created_at": 1525255200,
+                        "updated_at": 1525255200
+                    }
+                ]
+            }
+        ]
+    },
+    {
+        "id": 3,
+        "name": "Aligned to Partner Code",
+        "qualitative": 1,
+        "questions": []
+    }
+ ] 
+}

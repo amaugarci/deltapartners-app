@@ -1,0 +1,37 @@
+<div class="probability-container">
+
+    <div class="color-gray probability-percentage" ng-show="currentDot[sliderIndex.index] != 1" style="padding-top: 18px;position: absolute;margin-left: -5px;padding-left: 10%;">
+        0%
+    </div>
+    <div class="color-gray probability-percentage" ng-show="currentDot[sliderIndex.index] != 6" style="padding-top: 18px;position: absolute;margin-left: -8px;padding-left: 89.5%;">
+        100%
+    </div>
+
+    <div class="row probability-line" style="z-index:10;padding: 0px;margin-top: 0px; border:none; pointer-events: none;">
+        <div class="col col-10 probability-line-fill" ng-show="currentDot[sliderIndex.index] > 1"></div>
+        <div class="col col-40 probability-line-fill" ng-show="currentDot[sliderIndex.index] > 2"></div>
+        <div class="col col-20 probability-line-fill" ng-show="currentDot[sliderIndex.index] > 3"></div>
+        <div class="col col-20 probability-line-fill" ng-show="currentDot[sliderIndex.index] > 4"></div>
+        <div class="col col-10 probability-line-fill" ng-show="currentDot[sliderIndex.index] > 5"></div>
+    </div>
+     
+    <div class="probability-line"></div>
+    <div ng-repeat="dot in customSliderData" ng-class="{
+        'disabled-pointers':data.disabled,
+        'probability-dot-active-center': currentDot[sliderIndex.index] == {{$index+1}}}">
+        <div class="probability-dot probability-dot-{{$index+1}}" on-touch="selectedDot({{$index+1}}, sliderIndex.index)"
+             ng-class="{
+             'probability-dot-active': currentDot[sliderIndex.index] == {{$index+1}},
+             'probability-dot-disabled': currentDot[sliderIndex.index] < {{$index+1}},
+             'disabled-pointers': false && data.disableSuccessFee && sliderIndex.index == 1 && data.startingSuccessProb > getValueFromIndex($index+1)
+             }">
+            <div class="probability-message-bottom" ng-show="currentDot[sliderIndex.index] == {{$index+1}}">
+                {{customSliderData[$index].text}}
+            </div>
+            <div ng-show="currentDot[sliderIndex.index] == {{$index+1}}" class="ratio-custom-slider color-{{dot.value}}">
+                {{dot.value}}%
+            </div>
+        </div>
+    </div>
+
+</div>

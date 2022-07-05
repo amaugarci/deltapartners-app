@@ -1,0 +1,91 @@
+<!--
+<ion-view view-title="ACC MEMBERS">
+  <ion-content>
+    <ion-refresher
+    pulling-text="Pull to refresh..."
+    on-refresh="loadData(true)">
+  </ion-refresher>
+      <div class="subheader-1">
+        <div class="p-b10" style="margin-top:-4px">
+            <label class="item item-input item-select custom-select custom-select-small">
+              <select ng-model="orderBySelect" ng-change="setOrderBy(orderBySelect)">
+                <option value="" disabled selected>Order by:</option>
+                <option ng-repeat="(key, value) in data.orders" value="{{value}}">{{key}}</option>
+              </select>
+            </label>
+          </div>
+      </div>
+      
+      <ion-list class="notes-list">
+          <ion-item class="note-item item-icon-right p-r30 borderless-l borderless-r p-t5 p-b15" ng-repeat="account in data.accounts">
+            <div class="row-separator2" ng-show="$index != 0"> </div>
+            <div class="">
+              <div class="row p-l10" style="height: 60px">
+              
+                <div class="col text-color-3 text-1 text-bold color-darkblue text-left m-a">
+                  {{account.name}}
+              
+                </div>  
+              </div>
+              <div class="row p-b10">
+                  <div class="col"></div>
+                  <div class="row p-l0">
+                      <button class="col col-50 button-medium-2" ng-click="makeCall(account.phone)">{{account.phone}}</button>
+                      <button class="col col-50 button-medium-2 font-size8" ng-click="sendMail(account.email)">{{account.email}}</button>
+                  </div>
+                </div>
+              </div>
+          </ion-item>
+          
+      </ion-list>
+      <ion-infinite-scroll
+    ng-if="!data.noMoreData"
+    on-infinite="loadData(false)"
+    distance="1%">
+  </ion-infinite-scroll>
+  </ion-content>
+</ion-view>
+
+-->
+<ion-view view-title="ACC MEMBERS">
+    <ion-content>
+        <ion-refresher pulling-text="Pull to refresh..." on-refresh="loadData(true)"></ion-refresher>
+        <div class="subheader-1">
+            <div class="p-b10" style="margin-top:-4px">
+                <label class="item item-input item-select custom-select custom-select-small">
+                    <select ng-model="orderBySelect" ng-change="setOrderBy(orderBySelect)">
+                        <option value="" disabled selected>Order by:</option>
+                        <option ng-repeat="(key, value) in data.orders" value="{{value}}">{{key}}</option>
+                    </select>
+                </label>
+            </div>
+        </div>
+
+        <ion-list class="notes-list">
+            <ion-item class="note-item item-icon-right p-r30 borderless-l borderless-r"
+                      ng-repeat="account in data.accounts">
+                <div class="row-separator2" ng-show="$index != 0"></div>
+                <div class="">
+                    <div class="row p-l10" style="padding-top: 2px;margin-bottom: -9px !important;">
+                        <!-- <div class="col col-20 p-t0">
+                            <div class="row text-color-3 account-member-icon"></div>
+                      </div> -->
+                        <div class="col col-70 text-color-3 text-1 text-bold color-darkblue text-left m-a"
+                             style="padding-top: 2px">
+                            {{account.name}}
+                            <!--<a class="color-gray text">&nbsp;&nbsp;&nbsp;{{account.subtitle}}</a>-->
+                        </div>
+
+                        <div class="col col-15 m-a text-center font-size22" style="color:#7b8994 !important"
+                             ng-click="makeCall(account.phone)"><i class="fa fa-phone"></i></div>
+                        <div class="col col-15 m-a text-center font-size22" style="color:#7b8994 !important"
+                             ng-click="sendMail(account.email)"><i class="fa fa-envelope-o"></i></div>
+                    </div>
+
+                </div>
+            </ion-item>
+
+        </ion-list>
+        <ion-infinite-scroll ng-if="!data.noMoreData" on-infinite="loadData(false)" distance="1%"></ion-infinite-scroll>
+    </ion-content>
+</ion-view>

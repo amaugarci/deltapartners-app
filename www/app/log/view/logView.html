@@ -1,0 +1,26 @@
+<ion-view view-title="VIEW MESSAGE" hide-tabs can-swipe-back="false">
+    <ion-nav-buttons side="right">
+
+
+    </ion-nav-buttons>
+    <ion-content>
+
+
+        <div class="row m-t15 p-10">
+            <div class=" col col-30">
+                <div class="row text-color-3 m-t-15"><button ng-click="$ionicGoBack()" class="button back-button buttons button-clear header-item button-back-log">
+                <i class="icon ion-ios-arrow-back i-back-log"></i> BACK</button><!--<i class="log-icon icon fa {{icon}}"></i> --></div>
+            </div>
+            <div class="col col-70 p0">
+                <div ng-bind-html="messageHtml"></div>
+                <div class="row text font-size13 color-gray p-l0">
+                    <i class="fa fa-clock-o p-r10 " style="margin-top: auto;margin-bottom: auto"></i> {{time*1000 | amDateFormat:'DD MMM YYYY'}}
+                </div>
+
+            </div>
+        </div>
+        <div class="item-text-wrap text-1 text-left" style="padding: 0 25px 25px 25px;">
+                <div class="logs-detail-qualitative-comment m-10" ng-bind-html="newValue"></div>
+        </div>
+    </ion-content>
+</ion-view>

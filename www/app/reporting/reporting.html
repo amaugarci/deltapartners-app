@@ -1,0 +1,6 @@
+<ion-view view-title="MONTHLY REVENUE ($m)">
+  <ion-content>
+    <div ng-if="!modeCF" ng-include="'app/reporting/reportingMF.html'"></div>
+    <div ng-if="modeCF" ng-include="'app/reporting/reportingCF.html'"></div>
+  </ion-content>
+</ion-view>

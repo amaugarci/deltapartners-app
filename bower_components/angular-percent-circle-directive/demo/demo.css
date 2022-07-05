@@ -1,0 +1,16 @@
+body {
+	font-family: Arial, sans-serif;
+	text-align: center;
+	font-size: 1.5em;
+}
+
+.demo-percent-container {
+	width: 20%;
+	margin: 50px 40%;
+}
+
+.input-btn {
+	padding: 0.2em;
+	font-size: 0.7em;
+	border-radius: 0.3em;
+}

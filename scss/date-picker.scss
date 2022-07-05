@@ -1,0 +1,44 @@
+.ionic_datepicker_popup .popup-body .selected_date_full {
+    background: $BlauDeltaFosc !important; 
+    background: -webkit-linear-gradient($BlauDeltaFosc, $GrisDelta) !important;
+    background: -o-linear-gradient($BlauDeltaFosc, $GrisDelta) !important;
+    background: -moz-linear-gradient($BlauDeltaFosc, $GrisDelta) !important;
+    background: linear-gradient($BlauDeltaFosc, $GrisDelta) !important;
+    color: #fff;
+    font-family: 'OpenSansRegular' !important;
+}
+
+.ionic_datepicker_popup .selected_date {
+    background-color: $GrisDelta !important;
+    color: #fff;
+}
+
+.ionic_datepicker_popup .today {
+    border: 1px solid $GrisDelta !important;
+}
+
+.ionic_datepicker_popup .popup-buttons button {
+    background-color: $GrisDelta !important;
+    color: #ffffff;
+}
+
+.ionic_datepicker_popup .popup-body .month_select, .ionic_datepicker_popup .popup-body .year_select {
+    border-bottom: 1px solid $GrisDelta !important;
+}
+
+.ionic_datepicker_popup .popup-body .button-clear {
+    color: $GrisDelta !important
+}
+
+.ionic_datepicker_popup .popup-body .month_select:after, .ionic_datepicker_popup .popup-body .year_select:after {
+    color: $GrisDelta !important
+}
+
+.item-select select {
+    color: $BlauDeltaFosc !important
+}
+
+.ionic_datepicker_popup .popup-buttons button {
+    margin: 0px !important;
+    margin-left: 1px !important;
+}

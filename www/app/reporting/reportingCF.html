@@ -1,0 +1,109 @@
+    <div class="subheader-1 row p-l10 p-r10 p-b15">
+
+        <div class="col text-1 color-darkblue margin-auto-t-b">
+              Revenue type:
+          </div>
+          <!--
+        <div class="col">
+            <label class="item item-input item-select custom-select custom-select-row">
+              <select>
+                <option>Total</option>
+                <option>Type</option>
+              </select>
+            </label>
+          </div>
+          -->
+
+           <div class="col ">
+            <label class="item item-input item-select custom-select custom-select-row">
+              <select ng-model="categorieSelect" ng-change="showSelectCategories(categorieSelect)">
+                <option value="" disabled selected>Categories:</option>
+                <option ng-repeat="categorie in data.categoriesCF" value="{{categorie.id}}">{{categorie.name}}</option>
+              </select>
+            </label>
+          </div>
+      </div>
+
+    <div class="row number-chance font-size14 font-bold color-gray">
+      <div class="col col-10"></div>
+      <div class="col col-10"></div>
+    </div>
+    <div class="row number-chance p-t25 text-center">
+      <div class="col table-padding font-size10 color-gray m-b5 text-semibold">
+        MONTH
+        <div style="padding-top: 3px;">
+          <div class="square-background-5-inverse text-1 text-bold color-darkblue" ng-click="$index != 12 && showMonth($index)"  ng-repeat="value in stats.month track by $index" >
+          {{value}}
+          <i ng-show="$index != 12" class="icon ion-chevron-right color-5 font-size12" style="float:right; padding-right: 4px;"></i>
+          </div>
+        </div>
+          <!-- <i class="icon fa fa-angle-right font-size30 r0 color-5"></i> -->
+      </div>
+      <div class="col table-padding">
+        <div class="font-size10 color-gray m-b5 text-semibold">BUDGET</div>
+        <div class="square-background-5 text-1 color-darkblue text-bold" ng-repeat="value in stats.budget track by $index" ng-click="$index != 12 && showMonth($index)">
+          <div style="margin-bottom: 2px" ng-show="value>0">{{value | shortNumberInMillionsOneDecimal}}</div>
+          <div style="margin-bottom: 2px" ng-show="value==0">--</div>
+
+        </div>
+      </div>
+      <div class="col color-100 table-padding">
+        <div class="font-size10 color-gray m-b5 text-semibold">RET</div>
+        <div class="square-background-5 text-1 color-darkblue" ng-repeat="value in stats.details track by $index" ng-click="$index != 12 && showMonth($index)">
+
+          <div style="margin-bottom: 2px" ng-class="{'text-bold':$index==12}" ng-show="value.data.closed.revenue>0">{{value.data.closed.revenue | shortNumberInMillionsOneDecimal}}</div>
+          <div style="margin-bottom: 2px" ng-class="{'text-bold':$index==12}" ng-show="value.data.closed.revenue==0">--</div>
+
+        </div>
+      </div>
+      <div class="col color-90 table-padding text-1 ">
+        <div class="col col-25 pos-absolute m-t-25 m-l-25 font-size14 text-bold color-gray">CLOSED</div> <div></div>
+        <div class="font-size10 color-gray m-b5 text-semibold">SF</div>
+        <div class="square-background-5 text-1 color-darkblue" ng-repeat="value in stats.details track by $index" ng-click="$index != 12 && showMonth($index)">
+
+            <div style="margin-bottom: 2px" ng-class="{'text-bold':$index==12}" ng-show="value.data.closed.success_fee>0">
+              {{value.data.closed.success_fee | shortNumberInMillionsOneDecimal}}
+            </div>
+            <div style="margin-bottom: 2px" ng-class="{'text-bold':$index==12}" ng-show="value.data.closed.success_fee==0">--</div>
+
+        </div>
+      </div>
+      <div class="col color-70 table-padding text-1 text-semibold">
+        <div class="font-size10 color-gray m-b5">TOTAL</div>
+        <div class="square-background-5 text-1 color-darkblue text-bold" ng-repeat="value in stats.details track by $index" ng-click="$index != 12 && showMonth($index)">
+
+          <div style="margin-bottom: 2px" ng-show="value.data.closed.total>0">{{value.data.closed.total | shortNumberInMillionsOneDecimal}}</div>
+          <div style="margin-bottom: 2px" ng-show="value.data.closed.total==0">--</div>
+
+        </div>
+      </div>
+      <div class="col color-50 table-padding text-1 text-semibold">
+        <div class="font-size10 color-gray m-b5">RET</div>
+        <div class="square-background-5 text-1 color-darkblue" ng-repeat="value in stats.details track by $index" ng-click="$index != 12 && showMonth($index)">
+
+          <div style="margin-bottom: 2px" ng-class="{'text-bold':$index==12}" ng-show="value.data.pipe_adjusted.revenue>0">{{value.data.pipe_adjusted.revenue | shortNumberInMillionsOneDecimal}}</div>
+          <div style="margin-bottom: 2px" ng-class="{'text-bold':$index==12}" ng-show="value.data.pipe_adjusted.revenue==0">--</div>
+
+        </div>
+      </div>
+      <div class="col color-50 table-padding text-1 text-semibold">
+        <div class="col col-25 pos-absolute m-t-25 m-l-25 font-size14 text-bold color-gray">PIPE ADJ</div> <div></div>
+        <div class="font-size10 color-gray m-b5">SF</div>
+        <div class="square-background-5 text-1 color-darkblue" ng-repeat="value in stats.details track by $index" ng-click="$index != 12 && showMonth($index)">
+
+          <div style="margin-bottom: 2px" ng-class="{'text-bold':$index==12}" ng-show="value.data.pipe_adjusted.success_fee>0">{{value.data.pipe_adjusted.success_fee | shortNumberInMillionsOneDecimal}}</div>
+          <div style="margin-bottom: 2px" ng-class="{'text-bold':$index==12}" ng-show="value.data.pipe_adjusted.success_fee==0">--</div>
+
+        </div>
+      </div>
+      <div class="col color-50 table-padding text-1 text-semibold">
+        <div class="font-size10 color-gray m-b5">TOTAL</div>
+        <div class="square-background-5 text-1 color-darkblue text-bold" ng-repeat="value in stats.details track by $index" ng-click="$index != 12 && showMonth($index)">
+
+          <div style="margin-bottom: 2px" ng-show="value.data.pipe_adjusted.total>0">{{value.data.pipe_adjusted.total | shortNumberInMillionsOneDecimal}}</div>
+          <div style="margin-bottom: 2px" ng-show="value.data.pipe_adjusted.total==0">--</div>
+
+        </div>
+      </div>
+    </div>
+
